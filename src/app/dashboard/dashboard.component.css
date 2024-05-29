@@ -1,0 +1,36 @@
+nav{
+    background-color: #003255;
+    width: 180px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+nav img{
+    width: 70%;
+    margin: 26px auto 0 auto;
+}
+ul{
+    margin: 26px 0 0 0;
+    list-style: none;
+    font-size: 16px;
+}
+li{
+    padding: 6px 0 6px 20px;
+    margin-bottom: 16px;
+    transition-duration: .5s;
+}
+li:hover, li.active{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding-left: calc((100% / 2) - 30%);
+    transition: .5s;
+}
+i{
+    margin-right: 12px;
+}
+section{
+    width: calc(100vw - 180px);
+    padding: 24px;
+}

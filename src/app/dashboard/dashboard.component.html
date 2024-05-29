@@ -1,0 +1,21 @@
+<nav>
+    <img src="/assets/Mega_blanco.png" alt="Metrocarrier">
+    <ul>
+        <li
+            *ngFor="let item of navList; let i = index"
+            [ngClass] ="{'active' : selectedItem === i}"
+            (click)= "selectItem(i)">
+            <a [title]="item.title"><i [class]="item.icon"></i>{{item.title}}</a>
+        </li>
+    </ul>
+</nav>
+<section class="dashboard">
+    <app-accounts *ngIf="selectedItem === 0" class="accounts" @fadeInOut></app-accounts>
+    <app-resumen *ngIf="selectedItem === 1" class="resumen" @fadeInOut></app-resumen>
+    <app-solucion *ngIf="selectedItem === 2" class="solucion" @fadeInOut></app-solucion>
+    <app-alcance *ngIf="selectedItem === 3" class="alcance" @fadeInOut></app-alcance>
+    <app-formulario *ngIf="selectedItem === 4" class="formulario" @fadeInOut></app-formulario>
+    <div *ngIf="selectedItem === -1" class="defaultMSG" @fadeInOut>
+        <h1>Bienvenido</h1>
+    </div>
+</section>
