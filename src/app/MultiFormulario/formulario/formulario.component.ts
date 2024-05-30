@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent{
-  currentPart: number = 1;
+  currentPart: number = 2;
   
   // constructor(private fb:FormBuilder) {
   // }

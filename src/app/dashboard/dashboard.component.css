@@ -1,5 +1,6 @@
 nav{
     background-color: #003255;
+    position: fixed;
     width: 180px;
     height: 100vh;
     display: flex;
@@ -33,4 +34,5 @@ i{
 section{
     width: calc(100vw - 180px);
     padding: 24px;
+    margin-left: 180px;
 }
