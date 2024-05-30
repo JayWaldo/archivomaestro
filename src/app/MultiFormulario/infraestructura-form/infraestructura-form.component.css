@@ -1,0 +1,93 @@
+.container{
+    width: 100%;
+}
+.input-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+            
+.input-container label{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    width: 48%;
+    font-weight: 500;
+}
+.input-container label input{
+    border: none;
+    box-shadow: 1px 1px 1px #ECECEC;
+    padding: 18px;
+    border-radius: 2px;
+    transition: 0.5s;
+}
+.input-container label input:focus-visible{
+    outline: none;
+    box-shadow: 0 0 2px 2px #D3D3D3;
+    transition-duration: .4s;
+}
+fieldset {
+    width: 48%;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px;
+}
+fieldset legend{
+    font-weight: 600;
+    padding-top: 24px;
+}
+.radio-section div{
+    display: flex;
+    column-gap: 6px;
+}
+.radio-section div label{
+    margin: 0;
+    font-weight: 400;
+}
+.select-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    justify-content: space-between;
+    position: relative;
+    width: 48%;
+    font-weight: 500;
+}
+select{
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px 1px #ECECEC;
+    padding: 18px;
+    border-radius: 2px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.select-container .angle-container{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+    color: #D3D3D3;
+    pointer-events: none;
+    transition-duration: .5s;
+}
+select:focus{
+    outline: none;
+    box-shadow: 0 0 2px 2px #D3D3D3;
+    transition-duration: .4s;
+}
+select:focus + .angle-container{
+    color: black;
+    transition-duration: .5s;
+}

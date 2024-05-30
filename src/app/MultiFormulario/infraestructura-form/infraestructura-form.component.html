@@ -1,0 +1,55 @@
+<h1>Infraestructura</h1>
+    <div class="input-container">
+        <fieldset class="radio-section">
+            <legend>Se le presento al cliente</legend>
+            <div>
+                <input type="radio" id="cliente" name="cliente" value="true">
+                <label for="cliente">Si</label>
+            </div>
+            <div>
+                <input type="radio" id="cliente" name="cliente" value="false">
+                <label for="cliente">No</label>
+            </div>
+        </fieldset>
+
+        <fieldset class="radio-section">
+            <legend>Factura con nosotros</legend>
+            <div>
+                <input type="radio" id="factura" name="factura" value="true">
+                <label for="factura">Si</label>
+            </div>
+            <div>
+                <input type="radio" id="factura" name="factura" value="false">
+                <label for="factura">No</label>
+            </div>
+        </fieldset>
+    
+        <div class="select-container">Si no factura con nosotros, ¿con quien?
+            <select name="facturistas" id="facturas">
+                <option *ngFor="let item of facturaList; let i = index" value={{item.indexOf(item)}}>{{item}}</option>
+            </select>
+            <div class="angle-container">
+                <i class="fas fa-angle-down"></i>
+            </div>
+        </div>
+    
+        <label for="tamano">Tamaño
+            <input id="tamano" formcControlName="Infraestructura" type="number">
+        </label>
+    
+        <label for="actual">Presuspuesto del cliente año actual
+            <input id="actual" formcControlName="Infraestructura" type="number">
+        </label>
+    
+        <label for="anterior">Presupuesto del cliento año anterior
+            <input id="anterior" formcControlName="Infraestructura" type="number">
+        </label>
+    
+        <label for="presIT">Presupuesto asignado a TI
+            <input id="presIT" formcControlName="Infraestructura" type="number">
+        </label>
+    
+        <label for="retos">Retos para el 2024
+            <input id="retos" formcControlName="Infraestructura" type="text">
+        </label>
+    </div>

@@ -10,6 +10,8 @@ import { SolucionComponent } from './solucion/solucion.component';
 import { AlcanceComponent } from './alcance/alcance.component';
 import { FormularioComponent } from './MultiFormulario/formulario/formulario.component';
 import { FormsModule } from '@angular/forms';
+import { ResumenFormComponent } from './MultiFormulario/resumen-form/resumen-form.component';
+import { InfraestructuraFormComponent } from './MultiFormulario/infraestructura-form/infraestructura-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     ResumenComponent,
     SolucionComponent,
     AlcanceComponent,
-    FormularioComponent
+    FormularioComponent,
+    ResumenFormComponent,
+    InfraestructuraFormComponent
   ],
   imports: [
     BrowserModule,

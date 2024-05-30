@@ -17,8 +17,10 @@ ul{
     font-size: 16px;
 }
 li{
-    padding: 6px 0 6px 20px;
-    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    height: 42px;
     transition-duration: .5s;
 }
 li:hover, li.active{
