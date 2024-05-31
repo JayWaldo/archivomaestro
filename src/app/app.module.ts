@@ -12,6 +12,12 @@ import { FormularioComponent } from './MultiFormulario/formulario/formulario.com
 import { FormsModule } from '@angular/forms';
 import { ResumenFormComponent } from './MultiFormulario/resumen-form/resumen-form.component';
 import { InfraestructuraFormComponent } from './MultiFormulario/infraestructura-form/infraestructura-form.component';
+import { ColaboracionFormComponent } from './MultiFormulario/colaboracion-form/colaboracion-form.component';
+import { DataCenterFormComponent } from './MultiFormulario/data-center-form/data-center-form.component';
+import { CiberseguridadFormComponent } from './MultiFormulario/ciberseguridad-form/ciberseguridad-form.component';
+import { SeguridadFisicaFormComponent } from './MultiFormulario/seguridad-fisica-form/seguridad-fisica-form.component';
+import { IAFormComponent } from './MultiFormulario/iaform/iaform.component';
+import { FacturacionTotalFormComponent } from './MultiFormulario/facturacion-total-form/facturacion-total-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { InfraestructuraFormComponent } from './MultiFormulario/infraestructura-
     AlcanceComponent,
     FormularioComponent,
     ResumenFormComponent,
-    InfraestructuraFormComponent
+    InfraestructuraFormComponent,
+    ColaboracionFormComponent,
+    DataCenterFormComponent,
+    CiberseguridadFormComponent,
+    SeguridadFisicaFormComponent,
+    IAFormComponent,
+    FacturacionTotalFormComponent
   ],
   imports: [
     BrowserModule,

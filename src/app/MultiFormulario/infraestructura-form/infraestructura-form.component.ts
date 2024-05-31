@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class InfraestructuraFormComponent implements OnInit {
   title = 'Infraestructura'
   facturaList = [
+    '',
     'luis',
     'pedro',
     'Juan',

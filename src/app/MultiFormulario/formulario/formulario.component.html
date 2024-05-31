@@ -1,6 +1,6 @@
 <div class="avance">
     <div *ngFor="let sect of sectionsForm; let i = index">
-        <span [ngClass]="[sect.checked ? 'selected' : '']">{{i + 1}}</span>
+        <span [ngClass]="[sect.checked ? 'selected' : '']" (click)="goToSection(i)">{{i + 1}}</span>
         {{sect.title}}
     </div>
     
@@ -12,7 +12,33 @@
 <div *ngIf="currentPart === 2" class="container" @fadeInOut>
     <app-infraestructura-form></app-infraestructura-form>
 </div>
+
+<div *ngIf="currentPart === 3" class="container" @fadeInOut>
+    <app-colaboracion-form></app-colaboracion-form>
+</div>
+
+<div *ngIf="currentPart === 4" class="container" @fadeInOut>
+    <app-data-center-form></app-data-center-form>
+</div>
+
+<div *ngIf="currentPart === 5" class="container" @fadeInOut>
+    <app-ciberseguridad-form></app-ciberseguridad-form>
+</div>
+
+<div *ngIf="currentPart === 6" class="container" @fadeInOut>
+    <app-seguridad-fisica-form></app-seguridad-fisica-form>
+</div>
+
+<div *ngIf="currentPart === 7" class="container" @fadeInOut>
+    <app-iaform></app-iaform>
+</div>
+
+<div *ngIf="currentPart === 8" class="container" @fadeInOut>
+    <app-facturacion-total-form></app-facturacion-total-form>
+</div>
+
 <div class="buttons-container">
     <button *ngIf="currentPart > 1" (click) = "btnPrev()" @fadeInOut>Anterior</button>
-    <button *ngIf="currentPart < 9" (click) = "btnNext()" @fadeInOut>Siguiente</button>
+    <button class="guardar" @fadeInOut>Guardar</button>
+    <button *ngIf="currentPart < 8" (click) = "btnNext()" @fadeInOut>Siguiente</button>
 </div>

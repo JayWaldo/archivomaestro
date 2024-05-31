@@ -27,6 +27,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class DashboardComponent implements OnInit {
   title = 'Home';
   navList = [
+    {title: 'Inicio', icon: 'fas fa-home'},
     {title: 'Cuentas', icon: 'fas fa-user-circle'},
     {title: 'Resumen', icon: 'fas fa-list-alt'},
     {title: 'Solucion', icon: 'fas fa-check-square'},
@@ -34,7 +35,7 @@ export class DashboardComponent implements OnInit {
     {title: 'Registro', icon: 'fas fa-id-card'}
   ];
 
-  selectedItem: Number = 4;
+  selectedItem: Number = 0;
   constructor() { }
 
   selectItem(index:Number): void {

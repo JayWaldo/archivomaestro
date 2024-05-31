@@ -10,12 +10,12 @@
     </ul>
 </nav>
 <section class="dashboard">
-    <app-accounts *ngIf="selectedItem === 0" class="accounts" @fadeInOut></app-accounts>
-    <app-resumen *ngIf="selectedItem === 1" class="resumen" @fadeInOut></app-resumen>
-    <app-solucion *ngIf="selectedItem === 2" class="solucion" @fadeInOut></app-solucion>
-    <app-alcance *ngIf="selectedItem === 3" class="alcance" @fadeInOut></app-alcance>
-    <app-formulario *ngIf="selectedItem === 4" class="formulario" @fadeInOut></app-formulario>
-    <div *ngIf="selectedItem === -1" class="defaultMSG" @fadeInOut>
+    <div *ngIf="selectedItem === 0" class="defaultMSG" @fadeInOut>
         <h1>Bienvenido pinche wero sabroso</h1>
     </div>
+    <app-accounts *ngIf="selectedItem === 1" class="accounts" @fadeInOut></app-accounts>
+    <app-resumen *ngIf="selectedItem === 2" class="resumen" @fadeInOut></app-resumen>
+    <app-solucion *ngIf="selectedItem === 3" class="solucion" @fadeInOut></app-solucion>
+    <app-alcance *ngIf="selectedItem === 4" class="alcance" @fadeInOut></app-alcance>
+    <app-formulario *ngIf="selectedItem === 5" class="formulario" @fadeInOut></app-formulario>
 </section>

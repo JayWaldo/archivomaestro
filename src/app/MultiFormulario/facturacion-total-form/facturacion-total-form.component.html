@@ -1,0 +1,64 @@
+<h1>{{title}}</h1>
+    <div class="input-container">
+        <label for="tam">TAM
+            <input id="tam" type="number">
+        </label>
+        
+        <label for="red">Infraestructura de red
+            <input id="red" type="number">
+        </label>
+        
+        <label for="colaboracion">Colaboracion
+            <input id="colaboracion" type="number">
+        </label>
+        
+        <label for="catacenter">Data Center
+            <input id="catacenter" type="number">
+        </label>
+        
+        <label for="ciberseguridad">Ciberseguridad
+            <input id="ciberseguridad" type="number">
+        </label>
+        
+        <label for="seguridad">Seguridad Fisica
+            <input id="seguridad" type="number">
+        </label>
+        
+        <label for="ia">Inteligencia Artificial
+            <input id="ia" type="number">
+        </label>
+        <fieldset class="radio-section">
+            <legend>Soluciones fuera del portafolio?</legend>
+            <div>
+                <input type="radio" id="solucionSi" name="solucion" value="true">
+                <label for="solucionSI">Si</label>
+            </div>
+            <div>
+                <input type="radio" id="solucionNo" name="solucion" value="false">
+                <label for="solucionNo">No</label>
+            </div>
+        </fieldset>
+
+        <label for="servicio">Servicio
+            <input id="servicio" name="servicio" type="text" [(ngModel)]="serviceData.servicio">
+        </label>
+        <label for="inversion">Inversion
+            <input id="inversion" name="inversion" type="number" [(ngModel)]="serviceData.inversion">
+        </label>
+        <button class="agregar" (click)="saveService()">Agregar</button>
+
+        <table class="table">
+            <tr>
+                <td>Servicio</td>
+                <td>Inversion</td>
+                <td>Opciones</td>
+            </tr>
+            <tr *ngFor="let servicio of serviceList; let i = index">
+                <td>{{servicio.servicio}}</td>
+                <td>${{servicio.inversion}}</td>
+                <td>
+                    <button (click)="deleteService(i)">Eliminar</button>
+                </td>
+            </tr>
+        </table>
+    </div>

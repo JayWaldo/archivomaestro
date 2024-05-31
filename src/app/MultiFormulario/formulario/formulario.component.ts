@@ -1,7 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { ResumenFormComponent } from '../resumen-form/resumen-form.component';
 import { InfraestructuraFormComponent } from '../infraestructura-form/infraestructura-form.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ColaboracionFormComponent } from '../colaboracion-form/colaboracion-form.component';
+import { DataCenterFormComponent } from '../data-center-form/data-center-form.component';
+import { CiberseguridadFormComponent } from '../ciberseguridad-form/ciberseguridad-form.component';
+import { SeguridadFisicaFormComponent } from '../seguridad-fisica-form/seguridad-fisica-form.component';
+import { IAFormComponent } from '../iaform/iaform.component';
+import { FacturacionTotalFormComponent } from '../facturacion-total-form/facturacion-total-form.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -24,8 +29,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class FormularioComponent{
   sectionsForm = [
-  {title: 'Resumen', checked: false},
-  {title: 'Infraestructura', checked: true},
+  {title: 'Resumen', checked: true},
+  {title: 'Infraestructura', checked: false},
   {title: 'Colaboracion', checked: false},
   {title: 'Data Center', checked: false},
   {title: 'Ciberseguridad', checked: false},
@@ -33,7 +38,7 @@ export class FormularioComponent{
   {title: 'Inteligencia Artificial', checked: false},
   {title: 'Facturacion Total', checked: false},
   ]
-  currentPart: number = 2;
+  currentPart: number = 1;
    
    
   btnNext(){
@@ -45,5 +50,12 @@ export class FormularioComponent{
     this.sectionsForm[this.currentPart - 1].checked = false
     this.currentPart -= 1;
     this.sectionsForm[this.currentPart - 1].checked = true
+  }
+
+  goToSection(index: number){
+    this.sectionsForm[this.currentPart - 1].checked = false
+    this.currentPart = index + 1
+    this.sectionsForm[this.currentPart - 1].checked = true
+
   }
 }
