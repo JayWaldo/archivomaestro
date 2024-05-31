@@ -100,22 +100,6 @@ select:focus + .angle-container{
     transition-duration: .5s;
 }
 
-.agregar{
-    margin-top: 12px;
-    width: 100px;
-    height: 32px;
-    border: none;
-    background-color: #089ea8;
-    color: white;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: .4s;
-}
-.agregar:hover{
-    background-color: #3ad7e2;
-    transition: .4s;
-}
-
 .table{
     width: 98%;
     margin-top: 24px;
@@ -130,11 +114,32 @@ select:focus + .angle-container{
     justify-content: space-around;
     align-items: center;
 } */
-table tr td button{
+.table .titles{
+    font-weight: 500;
+}
+.table tr td button{
     border: none;
     cursor: pointer;
     background-color: rgb(146, 10, 10);
     padding: 4px;
     color: white;
     border-radius: 2px;
+}
+
+.table tr td label{
+    margin: 0;
+    width: 98%;
+}
+.table tr td label input {
+    padding: 9px;
+}
+
+.table tr td .agregar{
+    background-color: #6caa0f;
+    transition: .4s;
+    padding: 8px;
+}
+.table tr td .agregar:hover{
+    background-color: #93cc3e;
+    transition: .4s;
 }

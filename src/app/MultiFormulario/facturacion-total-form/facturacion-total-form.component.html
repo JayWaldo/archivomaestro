@@ -39,21 +39,28 @@
             </div>
         </fieldset>
 
-        <label for="servicio">Servicio
-            <input id="servicio" name="servicio" type="text" [(ngModel)]="serviceData.servicio">
-        </label>
-        <label for="inversion">Inversion
-            <input id="inversion" name="inversion" type="number" [(ngModel)]="serviceData.inversion">
-        </label>
-        <button class="agregar" (click)="saveService()">Agregar</button>
-
         <table class="table">
             <tr>
+                <td>
+                    <label for="servicio">
+                        <input id="servicio" name="servicio" type="text" [(ngModel)]="serviceData.servicio" placeholder="Servicio">
+                    </label>
+                </td>
+                <td>
+                    <label for="inversion">
+                        <input id="inversion" name="inversion" type="number" [(ngModel)]="serviceData.inversion" placeholder="Inversion">
+                    </label>
+                </td>
+                <td>
+                    <button class="agregar" (click)="saveService()">Agregar</button>
+                </td>
+            </tr>
+            <tr class="titles">
                 <td>Servicio</td>
                 <td>Inversion</td>
                 <td>Opciones</td>
             </tr>
-            <tr *ngFor="let servicio of serviceList; let i = index">
+            <tr *ngFor="let servicio of serviceList; let i = index"  @fadeInOut>
                 <td>{{servicio.servicio}}</td>
                 <td>${{servicio.inversion}}</td>
                 <td>

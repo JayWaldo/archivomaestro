@@ -1,10 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Servicio } from './Servicio';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-facturacion-total-form',
   templateUrl: './facturacion-total-form.component.html',
-  styleUrls: ['./facturacion-total-form.component.css']
+  styleUrls: ['./facturacion-total-form.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      state('*', style({
+        opacity: 1
+      })),
+      transition('void => *', [
+        animate('0.8s ease-out')
+      ])
+    ])
+  ]
 })
 export class FacturacionTotalFormComponent {
   title = 'Facturacion Total'
@@ -18,7 +32,7 @@ export class FacturacionTotalFormComponent {
   ]
   serviceData = {
     servicio: '',
-    inversion: 0
+    inversion : NaN
   };
 
   serviceList: Servicio[] = [
@@ -33,7 +47,7 @@ export class FacturacionTotalFormComponent {
     if(this.serviceData.servicio && this.serviceData.inversion != null){
       this.serviceList.push({ ...this.serviceData });
       this.serviceData.servicio = '';
-      this.serviceData.inversion = 0;
+      this.serviceData.inversion = NaN;
     }
   }
 

@@ -75,3 +75,11 @@ button:hover{
     background-color: #93cc3e;
     transition: .4s;
 }
+.enviar{
+    background-color:  #2b9da5;
+    transition: .4s;
+}
+.enviar:hover{
+    background-color:  #3dc0c0;
+    transition: .4s;
+}

@@ -38,7 +38,7 @@ export class FormularioComponent{
   {title: 'Inteligencia Artificial', checked: false},
   {title: 'Facturacion Total', checked: false},
   ]
-  currentPart: number = 1;
+  currentPart: number = 8;
    
    
   btnNext(){

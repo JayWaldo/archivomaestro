@@ -39,6 +39,7 @@
 
 <div class="buttons-container">
     <button *ngIf="currentPart > 1" (click) = "btnPrev()" @fadeInOut>Anterior</button>
-    <button class="guardar" @fadeInOut>Guardar</button>
+    <button *ngIf="currentPart !== 8" class="guardar" @fadeInOut>Guardar</button>
+    <button *ngIf="currentPart === 8" class="enviar" @fadeInOut>Enviar</button>
     <button *ngIf="currentPart < 8" (click) = "btnNext()" @fadeInOut>Siguiente</button>
 </div>
