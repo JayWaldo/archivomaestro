@@ -3,8 +3,12 @@
         <span [ngClass]="[sect.checked ? 'selected' : '']" (click)="goToSection(i)">{{i + 1}}</span>
         {{sect.title}}
     </div>
-    
 </div>
+<div *ngIf="showPopUp" class="guardadoView" @fadeInOutEase>
+    <p>Guardado</p>
+    <i class="fas fa-check"></i>
+</div>
+{{currentSection()}}
 <div *ngIf="currentPart === 1" class="container" @fadeInOut>
     <app-resumen-form></app-resumen-form>
 </div>
@@ -39,7 +43,7 @@
 
 <div class="buttons-container">
     <button *ngIf="currentPart > 1" (click) = "btnPrev()" @fadeInOut>Anterior</button>
-    <button *ngIf="currentPart !== 8" class="guardar" @fadeInOut>Guardar</button>
+    <button class="guardar" (click) = "saveCurrentSection()" @fadeInOut>Guardar</button>
     <button *ngIf="currentPart === 8" class="enviar" @fadeInOut>Enviar</button>
     <button *ngIf="currentPart < 8" (click) = "btnNext()" @fadeInOut>Siguiente</button>
 </div>

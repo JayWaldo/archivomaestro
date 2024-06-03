@@ -20,7 +20,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 6px 7px 8px 6px;
+    padding: 6px 7px 8px 6.5px;
     height: 24px;
     width: 24px;
     border-radius: 50%;
@@ -47,6 +47,28 @@
 }
 span:hover{
     cursor: pointer;
+}
+
+.guardadoView{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    color: white;
+    background-color: green;
+    border-radius: 4px;
+    padding: 12px 24px;
+    margin: 6px;
+    cursor: default;
+}
+.guardadoView.ng-enter,
+.guardadoView.ng-leave{
+    opacity: 0;
+}
+.guardadoView p{
+    margin-right: 12px;
 }
 .buttons-container{
     display: flex;

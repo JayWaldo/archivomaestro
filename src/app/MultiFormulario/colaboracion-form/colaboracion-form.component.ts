@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './colaboracion-form.component.html',
   styleUrls: ['./colaboracion-form.component.css']
 })
-export class ColaboracionFormComponent implements OnInit {
+export class ColaboracionFormComponent{
   title = 'Colaboracion'
   facturaList = [
     '',
@@ -15,9 +15,16 @@ export class ColaboracionFormComponent implements OnInit {
     'Yo mismo alv',
     'Tu jefa'
   ]
-  constructor() { }
-
-  ngOnInit(): void {
+  data = {
+    presentoCliente : false,
+    facturaConNosotros: false,
+    facturaOtro: '',
+    PBXpremisas: NaN,
+    PBXaasNube: NaN,
+    UCaas: NaN
   }
 
+  saveData(){
+    console.log(this.data);
+  }
 }

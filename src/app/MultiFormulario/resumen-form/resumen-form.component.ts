@@ -13,12 +13,13 @@ export class ResumenFormComponent {
     website: '',
     sector: '',
     tamano: '',
-    presupuestoActual: 0,
-    presupuestoAnterior: 0,
-    presupuestoIT: 0,
+    presupuestoActual: NaN,
+    presupuestoAnterior: NaN,
+    presupuestoIT: NaN,
     retos: ''
+  };
+
+  saveData(){
+    console.log(this.data);
   }
-  constructor() { }
-
-
 }

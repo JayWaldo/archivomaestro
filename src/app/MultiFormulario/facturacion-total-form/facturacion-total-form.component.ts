@@ -30,6 +30,17 @@ export class FacturacionTotalFormComponent {
     'Yo mismo alv',
     'Tu jefa'
   ]
+  data = {
+    TAM : NaN,
+    InfraRed: NaN,
+    Colaboracion: NaN,
+    DataCenter: NaN,
+    Ciberseguridad: NaN,
+    SeguridadFisica: NaN,
+    IA: NaN,
+    SolucionesPortafolio: false,
+    Servicio: [] as Servicio[]
+  }
   serviceData = {
     servicio: '',
     inversion : NaN
@@ -56,5 +67,9 @@ export class FacturacionTotalFormComponent {
       this.serviceList.splice(index, 1);
     }
   }
-
+  
+  saveData(){
+    this.data.Servicio = [...this.serviceList];
+    console.log(this.data);
+  }
 }

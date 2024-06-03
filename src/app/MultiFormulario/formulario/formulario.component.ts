@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ResumenFormComponent } from '../resumen-form/resumen-form.component';
 import { InfraestructuraFormComponent } from '../infraestructura-form/infraestructura-form.component';
 import { ColaboracionFormComponent } from '../colaboracion-form/colaboracion-form.component';
@@ -24,22 +24,54 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       transition('void => *', [
         animate('0.8s ease-out')
       ])
+    ]),
+    trigger('fadeInOutEase', [
+      state('void', style({
+        opacity: 0
+      })),
+      state('*', style({
+        opacity: 1
+      })),
+      transition('void => *', [
+        animate('0.8s ease-out')
+      ]),
+      transition('* => void', [
+        animate('0.8s ease-out')
+      ])
     ])
   ]
 })
-export class FormularioComponent{
+export class FormularioComponent implements AfterViewInit{
+  @ViewChild(ResumenFormComponent) resumenComp!: ResumenFormComponent;
+  @ViewChild(InfraestructuraFormComponent) infraestructuraComp!: InfraestructuraFormComponent;
+  @ViewChild(ColaboracionFormComponent) colaboracionComp!: ColaboracionFormComponent;
+  @ViewChild(DataCenterFormComponent) dataCenterComp!: DataCenterFormComponent;
+  @ViewChild(CiberseguridadFormComponent) ciberSeguridadComp!: CiberseguridadFormComponent;
+  @ViewChild(SeguridadFisicaFormComponent) seguridadFisicaComp!: SeguridadFisicaFormComponent;
+  @ViewChild(IAFormComponent) IAComp!: IAFormComponent;
+  @ViewChild(FacturacionTotalFormComponent) facturacionTotal!: FacturacionTotalFormComponent;
+
+  showPopUp = false;
+
   sectionsForm = [
-  {title: 'Resumen', checked: true},
-  {title: 'Infraestructura', checked: false},
-  {title: 'Colaboracion', checked: false},
-  {title: 'Data Center', checked: false},
-  {title: 'Ciberseguridad', checked: false},
-  {title: 'Seguridad Fisica', checked: false},
-  {title: 'Inteligencia Artificial', checked: false},
-  {title: 'Facturacion Total', checked: false},
+  {title: 'Resumen', checked: false, component: () => this.resumenComp},
+  {title: 'Infraestructura', checked: false, component: () => this.infraestructuraComp},
+  {title: 'Colaboracion', checked: false, component: () => this.colaboracionComp},
+  {title: 'Data Center', checked: false, component: () => this.dataCenterComp},
+  {title: 'Ciberseguridad', checked: false, component: () => this.ciberSeguridadComp},
+  {title: 'Seguridad Fisica', checked: false, component: () => this.seguridadFisicaComp},
+  {title: 'Inteligencia Artificial', checked: false, component: () => this.IAComp},
+  {title: 'Facturacion Total', checked: false, component: () => this.facturacionTotal},
   ]
-  currentPart: number = 8;
-   
+  ngAfterViewInit(): void {
+      
+  }
+
+  currentPart: number = 1;
+  
+  currentSection(){
+    this.sectionsForm[this.currentPart-1].checked = true;
+  }
    
   btnNext(){
     this.sectionsForm[this.currentPart - 1].checked = false
@@ -56,6 +88,16 @@ export class FormularioComponent{
     this.sectionsForm[this.currentPart - 1].checked = false
     this.currentPart = index + 1
     this.sectionsForm[this.currentPart - 1].checked = true
+  }
 
+  saveCurrentSection(){
+    const currentComp = this.sectionsForm[this.currentPart - 1].component();
+    currentComp?.saveData();
+
+    this.showPopUp = true;
+
+    setTimeout(() => {
+      this.showPopUp = false;
+    }, 3000);
   }
 }

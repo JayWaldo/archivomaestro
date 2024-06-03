@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './seguridad-fisica-form.component.html',
   styleUrls: ['./seguridad-fisica-form.component.css']
 })
-export class SeguridadFisicaFormComponent implements OnInit {
+export class SeguridadFisicaFormComponent{
   title = 'Seguridad Fisica'
   facturaList = [
     '',
@@ -15,9 +15,16 @@ export class SeguridadFisicaFormComponent implements OnInit {
     'Yo mismo alv',
     'Tu jefa'
   ]
-  constructor() { }
-
-  ngOnInit(): void {
+  data = {
+    presentoCliente : false,
+    facturaConNosotros: false,
+    facturaOtro: '',
+    c2c3c4c5: NaN,
+    Videdovigilancia: NaN,
+    ControlAccesos: NaN
   }
 
+  saveData(){
+    console.log(this.data);
+  }
 }

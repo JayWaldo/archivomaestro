@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './ciberseguridad-form.component.html',
   styleUrls: ['./ciberseguridad-form.component.css']
 })
-export class CiberseguridadFormComponent implements OnInit {
+export class CiberseguridadFormComponent{
   title = 'Ciberseguridad'
   facturaList = [
     '',
@@ -15,9 +15,18 @@ export class CiberseguridadFormComponent implements OnInit {
     'Yo mismo alv',
     'Tu jefa'
   ]
-  constructor() { }
-
-  ngOnInit(): void {
+  data = {
+    presentoCliente : false,
+    facturaConNosotros: false,
+    facturaOtro: '',
+    SOCass: NaN,
+    SASE: NaN,
+    ISA: NaN,
+    XDR: NaN,
+    Consultoria: NaN
   }
 
+  saveData(){
+    console.log(this.data);
+  }
 }

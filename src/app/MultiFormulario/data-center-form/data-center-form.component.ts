@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './data-center-form.component.html',
   styleUrls: ['./data-center-form.component.css']
 })
-export class DataCenterFormComponent implements OnInit {
+export class DataCenterFormComponent{
   title = 'Data Center'
   facturaList = [
     '',
@@ -15,9 +15,16 @@ export class DataCenterFormComponent implements OnInit {
     'Yo mismo alv',
     'Tu jefa'
   ]
-  constructor() { }
-
-  ngOnInit(): void {
+  data = {
+    presentoCliente : false,
+    facturaConNosotros: false,
+    facturaOtro: '',
+    Colocacion: NaN,
+    InfraPremisas: NaN,
+    Nube: NaN
   }
 
+  saveData(){
+    console.log(this.data);
+  }
 }

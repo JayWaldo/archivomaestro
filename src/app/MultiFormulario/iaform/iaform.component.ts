@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './iaform.component.html',
   styleUrls: ['./iaform.component.css']
 })
-export class IAFormComponent implements OnInit {
+export class IAFormComponent{
   title = 'Inteligencia Artificial'
   facturaList = [
     '',
@@ -15,9 +15,14 @@ export class IAFormComponent implements OnInit {
     'Yo mismo alv',
     'Tu jefa'
   ]
-  constructor() { }
-
-  ngOnInit(): void {
+  data = {
+    presentoCliente : false,
+    facturaConNosotros: false,
+    facturaOtro: '',
+    IA: NaN
   }
 
+  saveData(){
+    console.log(this.data);
+  }
 }

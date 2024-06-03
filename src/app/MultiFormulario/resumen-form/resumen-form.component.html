@@ -1,34 +1,34 @@
 <h1>{{title}}</h1>
     <div class="input-container">
         <label for="general">Resumen General de la cuenta
-            <input id="general" formcControlName="resumen" type="text" placeholder="Escriba aqui">
+            <input id="general" type="text" placeholder="Escriba aqui" [(ngModel)]="data.resumen">
         </label>
     
         <label for="website">Sitio web
-            <input id="website" formcControlName="resumen" type="text">
+            <input id="website" type="text" [(ngModel)]="data.website">
         </label>
     
         <label for="sector">Sector/Segmento
-            <input id="sector" formcControlName="resumen" type="text">
+            <input id="sector" type="text" [(ngModel)]="data.sector">
         </label>
     
         <label for="tamano">Tamaño
-            <input id="tamano" formcControlName="resumen" type="number">
+            <input id="tamano" type="number" [(ngModel)]="data.tamano">
         </label>
     
         <label for="actual">Presupuesto del cliente año actual
-            <input id="actual" formcControlName="resumen" type="number">
+            <input id="actual" type="number" [(ngModel)]="data.presupuestoActual">
         </label>
     
         <label for="anterior">Presupuesto del cliente año anterior
-            <input id="anterior" formcControlName="resumen" type="number">
+            <input id="anterior" type="number" [(ngModel)]="data.presupuestoAnterior">
         </label>
     
         <label for="presIT">Presupuesto asignado a TI
-            <input id="presIT" formcControlName="resumen" type="number">
+            <input id="presIT" type="number" [(ngModel)]="data.presupuestoIT">
         </label>
     
         <label for="retos">Retos para el 2024
-            <input id="retos" formcControlName="resumen" type="text">
+            <input id="retos" type="text" [(ngModel)]="data.retos">
         </label>
     </div>

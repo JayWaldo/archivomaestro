@@ -3,11 +3,11 @@
         <fieldset class="radio-section">
             <legend>Se le presento al cliente</legend>
             <div>
-                <input type="radio" id="cliente" name="cliente" value="true">
+                <input type="radio" id="cliente" name="cliente" [value]="true" [(ngModel)]="this.data.presentoCliente">
                 <label for="cliente">Si</label>
             </div>
             <div>
-                <input type="radio" id="cliente" name="cliente" value="false">
+                <input type="radio" id="cliente" name="cliente" [value]="false" [(ngModel)]="this.data.presentoCliente">
                 <label for="cliente">No</label>
             </div>
         </fieldset>
@@ -15,18 +15,18 @@
         <fieldset class="radio-section">
             <legend>Factura con nosotros</legend>
             <div>
-                <input type="radio" id="factura" name="factura" value="true">
+                <input type="radio" id="factura" name="factura" [value]="true" [(ngModel)]="this.data.facturaConNosotros">
                 <label for="factura">Si</label>
             </div>
             <div>
-                <input type="radio" id="factura" name="factura" value="false">
+                <input type="radio" id="factura" name="factura" [value]="false" [(ngModel)]="this.data.facturaConNosotros">
                 <label for="factura">No</label>
             </div>
         </fieldset>
     
         <div class="select-container">Si no factura con nosotros, ¿con quien?
-            <select name="facturistas" id="facturas">
-                <option *ngFor="let item of facturaList; let i = index" value={{item.indexOf(item)}}>{{item}}</option>
+            <select name="facturistas" id="facturas" [(ngModel)]="this.data.facturaOtro">
+                <option *ngFor="let item of facturaList; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
             </select>
             <div class="angle-container">
                 <i class="fas fa-angle-down"></i>
@@ -34,22 +34,22 @@
         </div>
     
         <label for="SOCass">SOCass
-            <input id="SOCass" type="number">
+            <input id="SOCass" type="number" [(ngModel)]="this.data.SOCass">
         </label>
     
         <label for="SASE">SASE
-            <input id="SASE" type="number">
+            <input id="SASE" type="number" [(ngModel)]="this.data.SASE">
         </label>
     
         <label for="ISA">ISA
-            <input id="ISA" type="number">
+            <input id="ISA" type="number" [(ngModel)]="this.data.ISA">
         </label>
     
         <label for="XDR">XDR
-            <input id="XDR" type="number">
+            <input id="XDR" type="number" [(ngModel)]="this.data.XDR">
         </label>
         
         <label for="consultoria">Consultoria
-            <input id="consultoria" type="number">
+            <input id="consultoria" type="number" [(ngModel)]="this.data.Consultoria">
         </label>
     </div>

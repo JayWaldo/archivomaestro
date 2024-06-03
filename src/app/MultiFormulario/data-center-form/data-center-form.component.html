@@ -3,11 +3,11 @@
         <fieldset class="radio-section">
             <legend>Se le presento al cliente</legend>
             <div>
-                <input type="radio" id="cliente" name="cliente" value="true">
+                <input type="radio" id="cliente" name="cliente" [value]="true" [(ngModel)]="this.data.presentoCliente">
                 <label for="cliente">Si</label>
             </div>
             <div>
-                <input type="radio" id="cliente" name="cliente" value="false">
+                <input type="radio" id="cliente" name="cliente" [value]="false" [(ngModel)]="this.data.presentoCliente">
                 <label for="cliente">No</label>
             </div>
         </fieldset>
@@ -15,18 +15,18 @@
         <fieldset class="radio-section">
             <legend>Factura con nosotros</legend>
             <div>
-                <input type="radio" id="factura" name="factura" value="true">
+                <input type="radio" id="factura" name="factura" [value]="true" [(ngModel)]="this.data.facturaConNosotros">
                 <label for="factura">Si</label>
             </div>
             <div>
-                <input type="radio" id="factura" name="factura" value="false">
+                <input type="radio" id="factura" name="factura" [value]="false" [(ngModel)]="this.data.facturaConNosotros">
                 <label for="factura">No</label>
             </div>
         </fieldset>
     
         <div class="select-container">Si no factura con nosotros, ¿con quien?
-            <select name="facturistas" id="facturas">
-                <option *ngFor="let item of facturaList; let i = index" value={{item.indexOf(item)}}>{{item}}</option>
+            <select name="facturistas" id="facturas" [(ngModel)]="this.data.facturaOtro">
+                <option *ngFor="let item of facturaList; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
             </select>
             <div class="angle-container">
                 <i class="fas fa-angle-down"></i>
@@ -34,14 +34,14 @@
         </div>
     
         <label for="colocacion">Colocacion
-            <input id="colocacion" type="number">
+            <input id="colocacion" type="number" [(ngModel)]="this.data.Colocacion">
         </label>
     
         <label for="infraestructura">Infraestructura en premisas
-            <input id="infraestructura" type="number">
+            <input id="infraestructura" type="number" [(ngModel)]="this.data.InfraPremisas">
         </label>
     
         <label for="nube">Nube Publica/Privada/Hibrida
-            <input id="nube" type="number">
+            <input id="nube" type="number" [(ngModel)]="this.data.Nube">
         </label>
     </div>

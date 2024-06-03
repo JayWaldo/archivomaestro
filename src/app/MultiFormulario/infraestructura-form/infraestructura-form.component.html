@@ -3,11 +3,11 @@
         <fieldset class="radio-section">
             <legend>Se le presento al cliente</legend>
             <div>
-                <input type="radio" id="cliente" name="cliente" value="true">
+                <input type="radio" id="cliente" name="cliente" [(ngModel)]="data.presentoCliente" [value]="true">
                 <label for="cliente">Si</label>
             </div>
             <div>
-                <input type="radio" id="cliente" name="cliente" value="false">
+                <input type="radio" id="cliente" name="cliente" [(ngModel)]="data.presentoCliente" [value]="false">
                 <label for="cliente">No</label>
             </div>
         </fieldset>
@@ -15,18 +15,18 @@
         <fieldset class="radio-section">
             <legend>Factura con nosotros</legend>
             <div>
-                <input type="radio" id="factura" name="factura" value="true">
+                <input type="radio" id="factura" name="factura" [(ngModel)]="data.facturaConNosotros" [value]="true">
                 <label for="factura">Si</label>
             </div>
             <div>
-                <input type="radio" id="factura" name="factura" value="false">
+                <input type="radio" id="factura" name="factura" [(ngModel)]="data.facturaConNosotros" [value]="false">
                 <label for="factura">No</label>
             </div>
         </fieldset>
     
         <div class="select-container">Si no factura con nosotros, ¿con quien?
-            <select name="facturistas" id="facturas">
-                <option *ngFor="let item of facturaList; let i = index" value={{item.indexOf(item)}}>{{item}}</option>
+            <select name="facturistas" id="facturas" [(ngModel)]="data.facturaOtro">
+                <option *ngFor="let item of facturaList; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
             </select>
             <div class="angle-container">
                 <i class="fas fa-angle-down"></i>
@@ -34,18 +34,18 @@
         </div>
     
         <label for="wan">Redes de WAN/Lan
-            <input id="wan" type="number">
+            <input id="wan" type="number" [(ngModel)]="data.redWanLan">
         </label>
     
         <label for="sdwan">Redes SD-WAN
-            <input id="sdwan" type="number">
+            <input id="sdwan" type="number" [(ngModel)]="data.redSDWan">
         </label>
     
         <label for="wifi">Redes WI-FI
-            <input id="wifi" type="number">
+            <input id="wifi" type="number" [(ngModel)]="data.redWifi">
         </label>
     
         <label for="gpon">Redes GPON
-            <input id="gpon" type="number">
+            <input id="gpon" type="number" [(ngModel)]="data.redGpon">
         </label>
     </div>
