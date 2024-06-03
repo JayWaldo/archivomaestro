@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ICiberseguridad } from '../Modelos';
 
 @Component({
   selector: 'app-ciberseguridad-form',
@@ -15,15 +16,15 @@ export class CiberseguridadFormComponent{
     'Yo mismo alv',
     'Tu jefa'
   ]
-  data = {
+  @Input() data:ICiberseguridad = {
     presentoCliente : false,
     facturaConNosotros: false,
     facturaOtro: '',
-    SOCass: NaN,
-    SASE: NaN,
-    ISA: NaN,
-    XDR: NaN,
-    Consultoria: NaN
+    SOCass: 0,
+    SASE: 0,
+    ISA: 0,
+    XDR: 0,
+    Consultoria: 0
   }
 
   saveData(){

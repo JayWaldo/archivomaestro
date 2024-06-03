@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IinteligenciaArtificial } from '../Modelos';
 
 @Component({
   selector: 'app-iaform',
@@ -15,11 +16,11 @@ export class IAFormComponent{
     'Yo mismo alv',
     'Tu jefa'
   ]
-  data = {
+  @Input() data : IinteligenciaArtificial= {
     presentoCliente : false,
     facturaConNosotros: false,
     facturaOtro: '',
-    IA: NaN
+    IA: 0
   }
 
   saveData(){

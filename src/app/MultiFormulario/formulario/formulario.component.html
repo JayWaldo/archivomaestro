@@ -10,35 +10,35 @@
 </div>
 {{currentSection()}}
 <div *ngIf="currentPart === 1" class="container" @fadeInOut>
-    <app-resumen-form></app-resumen-form>
+    <app-resumen-form [data]="sectionsForm[0].dataComp"></app-resumen-form>
 </div>
 
 <div *ngIf="currentPart === 2" class="container" @fadeInOut>
-    <app-infraestructura-form></app-infraestructura-form>
+    <app-infraestructura-form [data]="sectionsForm[1].dataComp"></app-infraestructura-form>
 </div>
 
 <div *ngIf="currentPart === 3" class="container" @fadeInOut>
-    <app-colaboracion-form></app-colaboracion-form>
+    <app-colaboracion-form [data]="sectionsForm[2].dataComp"></app-colaboracion-form>
 </div>
 
 <div *ngIf="currentPart === 4" class="container" @fadeInOut>
-    <app-data-center-form></app-data-center-form>
+    <app-data-center-form [data]="sectionsForm[3].dataComp"></app-data-center-form>
 </div>
 
 <div *ngIf="currentPart === 5" class="container" @fadeInOut>
-    <app-ciberseguridad-form></app-ciberseguridad-form>
+    <app-ciberseguridad-form [data]="sectionsForm[4].dataComp"></app-ciberseguridad-form>
 </div>
 
 <div *ngIf="currentPart === 6" class="container" @fadeInOut>
-    <app-seguridad-fisica-form></app-seguridad-fisica-form>
+    <app-seguridad-fisica-form [data]="sectionsForm[5].dataComp"></app-seguridad-fisica-form>
 </div>
 
 <div *ngIf="currentPart === 7" class="container" @fadeInOut>
-    <app-iaform></app-iaform>
+    <app-iaform [data]="sectionsForm[6].dataComp"></app-iaform>
 </div>
 
 <div *ngIf="currentPart === 8" class="container" @fadeInOut>
-    <app-facturacion-total-form></app-facturacion-total-form>
+    <app-facturacion-total-form [data]="sectionsForm[7].dataComp"></app-facturacion-total-form>
 </div>
 
 <div class="buttons-container">

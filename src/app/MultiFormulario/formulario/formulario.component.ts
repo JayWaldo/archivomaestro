@@ -8,6 +8,7 @@ import { SeguridadFisicaFormComponent } from '../seguridad-fisica-form/seguridad
 import { IAFormComponent } from '../iaform/iaform.component';
 import { FacturacionTotalFormComponent } from '../facturacion-total-form/facturacion-total-form.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ICiberseguridad, IColaboracion, IDataCenter, IFacturacionTotal, IResumen, ISeguridadFisica, Iinfraestructura, IinteligenciaArtificial } from '../Modelos';
 
 @Component({
   selector: 'app-formulario',
@@ -49,21 +50,21 @@ export class FormularioComponent implements AfterViewInit{
   @ViewChild(CiberseguridadFormComponent) ciberSeguridadComp!: CiberseguridadFormComponent;
   @ViewChild(SeguridadFisicaFormComponent) seguridadFisicaComp!: SeguridadFisicaFormComponent;
   @ViewChild(IAFormComponent) IAComp!: IAFormComponent;
-  @ViewChild(FacturacionTotalFormComponent) facturacionTotal!: FacturacionTotalFormComponent;
+  @ViewChild(FacturacionTotalFormComponent) facturacionTotalComp!: FacturacionTotalFormComponent;
 
   showPopUp = false;
 
   sectionsForm = [
-  {title: 'Resumen', checked: false, component: () => this.resumenComp},
-  {title: 'Infraestructura', checked: false, component: () => this.infraestructuraComp},
-  {title: 'Colaboracion', checked: false, component: () => this.colaboracionComp},
-  {title: 'Data Center', checked: false, component: () => this.dataCenterComp},
-  {title: 'Ciberseguridad', checked: false, component: () => this.ciberSeguridadComp},
-  {title: 'Seguridad Fisica', checked: false, component: () => this.seguridadFisicaComp},
-  {title: 'Inteligencia Artificial', checked: false, component: () => this.IAComp},
-  {title: 'Facturacion Total', checked: false, component: () => this.facturacionTotal},
+  {title: 'Resumen', checked: false, component: this.resumenComp, dataComp: {} as any},
+  {title: 'Infraestructura', checked: false, component: this.infraestructuraComp, dataComp: {} as any},
+  {title: 'Colaboracion', checked: false, component: this.colaboracionComp, dataComp: {} as any},
+  {title: 'Data Center', checked: false, component: this.dataCenterComp, dataComp: {} as any},
+  {title: 'Ciberseguridad', checked: false, component: this.ciberSeguridadComp, dataComp: {} as any},
+  {title: 'Seguridad Fisica', checked: false, component: this.seguridadFisicaComp, dataComp: {} as any},
+  {title: 'Inteligencia Artificial', checked: false, component: this.IAComp, dataComp: {} as any},
+  {title: 'Facturacion Total', checked: false, component: this.facturacionTotalComp, dataComp: {} as any},
   ]
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
       
   }
 
@@ -74,30 +75,59 @@ export class FormularioComponent implements AfterViewInit{
   }
    
   btnNext(){
+    this.saveCurrentSectionData();
     this.sectionsForm[this.currentPart - 1].checked = false
     this.currentPart += 1;
     this.sectionsForm[this.currentPart - 1].checked = true
   }
   btnPrev(){
+    this.saveCurrentSectionData();
     this.sectionsForm[this.currentPart - 1].checked = false
     this.currentPart -= 1;
     this.sectionsForm[this.currentPart - 1].checked = true
   }
 
   goToSection(index: number){
+    this.saveCurrentSectionData();
     this.sectionsForm[this.currentPart - 1].checked = false
     this.currentPart = index + 1
     this.sectionsForm[this.currentPart - 1].checked = true
   }
 
   saveCurrentSection(){
-    const currentComp = this.sectionsForm[this.currentPart - 1].component();
-    currentComp?.saveData();
-
+    this.saveCurrentSectionData();
     this.showPopUp = true;
-
     setTimeout(() => {
       this.showPopUp = false;
     }, 3000);
+  }
+  saveCurrentSectionData(){
+    const currentComponent = this.getCurrentComponent();
+    if(currentComponent){
+      currentComponent.saveData();
+      this.sectionsForm[this.currentPart - 1].dataComp = currentComponent.data;
+    }
+  }
+  getCurrentComponent(){
+    switch (this.currentPart){
+      case 1:
+        return this.resumenComp;
+      case 2:
+        return this.infraestructuraComp;
+      case 3:
+        return this.colaboracionComp;
+      case 4:
+        return this.dataCenterComp;
+      case 5:
+        return this.ciberSeguridadComp;
+      case 6:
+        return this.seguridadFisicaComp;
+      case 7:
+        return this.IAComp;
+      case 8:
+        return this.facturacionTotalComp;
+      default:
+        return null;
+    }
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IColaboracion } from '../Modelos';
 
 @Component({
   selector: 'app-colaboracion-form',
@@ -15,13 +16,13 @@ export class ColaboracionFormComponent{
     'Yo mismo alv',
     'Tu jefa'
   ]
-  data = {
+  @Input() data : IColaboracion = {
     presentoCliente : false,
     facturaConNosotros: false,
     facturaOtro: '',
-    PBXpremisas: NaN,
-    PBXaasNube: NaN,
-    UCaas: NaN
+    PBXpremisas: 0,
+    PBXaasNube: 0,
+    UCaas: 0
   }
 
   saveData(){

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IResumen } from '../Modelos';
 
 @Component({
   selector: 'app-resumen-form',
@@ -8,14 +9,14 @@ import { Component } from '@angular/core';
 export class ResumenFormComponent {
 
   title = 'Resumen';
-  data = {
+  @Input() data : IResumen = {
     resumen: '',
     website: '',
     sector: '',
     tamano: '',
-    presupuestoActual: NaN,
-    presupuestoAnterior: NaN,
-    presupuestoIT: NaN,
+    presupuestoActual: 0,
+    presupuestoAnterior: 0,
+    presupuestoIT: 0,
     retos: ''
   };
 

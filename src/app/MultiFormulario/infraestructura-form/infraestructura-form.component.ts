@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Iinfraestructura } from '../Modelos';
 
 @Component({
   selector: 'app-infraestructura-form',
@@ -16,14 +17,14 @@ export class InfraestructuraFormComponent{
     'Tu jefa'
   ]
 
-  data = {
+  @Input() data : Iinfraestructura = {
     presentoCliente : false,
     facturaConNosotros: false,
     facturaOtro: '',
-    redWanLan: NaN,
-    redSDWan: NaN,
-    redWifi: NaN,
-    redGpon: NaN
+    redWanLan: 0,
+    redSDWan: 0,
+    redWifi: 0,
+    redGpon: 0
   }
 
   saveData(){

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Servicio } from './Servicio';
+import { Component, Input, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { IFacturacionTotal, IServicio } from '../Modelos';
 
 @Component({
   selector: 'app-facturacion-total-form',
@@ -30,23 +30,23 @@ export class FacturacionTotalFormComponent {
     'Yo mismo alv',
     'Tu jefa'
   ]
-  data = {
-    TAM : NaN,
-    InfraRed: NaN,
-    Colaboracion: NaN,
-    DataCenter: NaN,
-    Ciberseguridad: NaN,
-    SeguridadFisica: NaN,
-    IA: NaN,
+  @Input() data: IFacturacionTotal = {
+    TAM : 0,
+    InfraRed: 0,
+    Colaboracion: 0,
+    DataCenter: 0,
+    Ciberseguridad: 0,
+    SeguridadFisica: 0,
+    IA: 0,
     SolucionesPortafolio: false,
-    Servicio: [] as Servicio[]
+    Servicio: [] as IServicio[]
   }
   serviceData = {
     servicio: '',
-    inversion : NaN
+    inversion : 0
   };
 
-  serviceList: Servicio[] = [
+  serviceList: IServicio[] = [
     {
       servicio: 'IA',
       inversion: 1500

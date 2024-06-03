@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IDataCenter } from '../Modelos';
 
 @Component({
   selector: 'app-data-center-form',
@@ -15,13 +16,13 @@ export class DataCenterFormComponent{
     'Yo mismo alv',
     'Tu jefa'
   ]
-  data = {
+  @Input() data : IDataCenter = {
     presentoCliente : false,
     facturaConNosotros: false,
     facturaOtro: '',
-    Colocacion: NaN,
-    InfraPremisas: NaN,
-    Nube: NaN
+    Colocacion: 0,
+    InfraPremisas: 0,
+    Nube: 0
   }
 
   saveData(){
