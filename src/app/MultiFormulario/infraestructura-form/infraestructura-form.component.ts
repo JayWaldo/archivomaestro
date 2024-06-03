@@ -12,9 +12,7 @@ export class InfraestructuraFormComponent{
     '',
     'luis',
     'pedro',
-    'Juan',
-    'Yo mismo alv',
-    'Tu jefa'
+    'Juan'
   ]
 
   @Input() data : Iinfraestructura = {

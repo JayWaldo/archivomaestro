@@ -12,9 +12,7 @@ export class DataCenterFormComponent{
     '',
     'luis',
     'pedro',
-    'Juan',
-    'Yo mismo alv',
-    'Tu jefa'
+    'Juan'
   ]
   @Input() data : IDataCenter = {
     presentoCliente : false,

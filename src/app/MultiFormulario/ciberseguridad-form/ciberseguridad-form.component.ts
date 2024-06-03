@@ -12,9 +12,7 @@ export class CiberseguridadFormComponent{
     '',
     'luis',
     'pedro',
-    'Juan',
-    'Yo mismo alv',
-    'Tu jefa'
+    'Juan'
   ]
   @Input() data:ICiberseguridad = {
     presentoCliente : false,

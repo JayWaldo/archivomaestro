@@ -12,9 +12,7 @@ export class ColaboracionFormComponent{
     '',
     'luis',
     'pedro',
-    'Juan',
-    'Yo mismo alv',
-    'Tu jefa'
+    'Juan'
   ]
   @Input() data : IColaboracion = {
     presentoCliente : false,

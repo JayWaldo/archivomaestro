@@ -26,9 +26,7 @@ export class FacturacionTotalFormComponent {
     '',
     'luis',
     'pedro',
-    'Juan',
-    'Yo mismo alv',
-    'Tu jefa'
+    'Juan'
   ]
   @Input() data: IFacturacionTotal = {
     TAM : 0,
@@ -43,7 +41,7 @@ export class FacturacionTotalFormComponent {
   }
   serviceData = {
     servicio: '',
-    inversion : 0
+    inversion : NaN
   };
 
   serviceList: IServicio[] = [

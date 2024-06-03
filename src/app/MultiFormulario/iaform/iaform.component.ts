@@ -12,9 +12,7 @@ export class IAFormComponent{
     '',
     'luis',
     'pedro',
-    'Juan',
-    'Yo mismo alv',
-    'Tu jefa'
+    'Juan'
   ]
   @Input() data : IinteligenciaArtificial= {
     presentoCliente : false,

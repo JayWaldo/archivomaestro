@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
     {title: 'Registro', icon: 'fas fa-id-card'}
   ];
 
-  selectedItem: Number = 5;
+  selectedItem: Number = 0;
   constructor() { }
 
   selectItem(index:Number): void {

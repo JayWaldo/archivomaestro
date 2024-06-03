@@ -12,9 +12,7 @@ export class SeguridadFisicaFormComponent{
     '',
     'luis',
     'pedro',
-    'Juan',
-    'Yo mismo alv',
-    'Tu jefa'
+    'Juan'
   ]
   @Input() data : ISeguridadFisica = {
     presentoCliente : false,
