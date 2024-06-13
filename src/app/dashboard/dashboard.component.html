@@ -8,14 +8,14 @@
             <a [title]="item.title"><i [class]="item.icon"></i>{{item.title}}</a>
         </li>
     </ul>
+    <div class="bottomWrapper">
+        <div class="userInfo">
+            <i class="fas fa-id-card"></i>
+            <p>{{admin.Correo}}</p>
+        </div>
+    </div>
 </nav>
 <section class="dashboard">
-    <div *ngIf="selectedItem === 0" class="defaultMSG" @fadeInOut>
-        <h1>Bienvenido</h1>
-    </div>
-    <app-accounts *ngIf="selectedItem === 1" class="accounts" @fadeInOut></app-accounts>
-    <app-resumen *ngIf="selectedItem === 2" class="resumen" @fadeInOut></app-resumen>
-    <app-solucion *ngIf="selectedItem === 3" class="solucion" @fadeInOut></app-solucion>
-    <app-alcance *ngIf="selectedItem === 4" class="alcance" @fadeInOut></app-alcance>
-    <app-formulario *ngIf="selectedItem === 5" class="formulario" @fadeInOut></app-formulario>
+    <app-inicio *ngIf="selectedItem === 0" class="" @fadeInOut></app-inicio>
+    <app-registro *ngIf="selectedItem === 1" class="accounts" @fadeInOut></app-registro>
 </section>

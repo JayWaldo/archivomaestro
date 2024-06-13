@@ -38,3 +38,22 @@ section{
     padding: 24px;
     margin-left: 180px;
 }
+.bottomWrapper{
+    position: absolute;
+    bottom: 24px;
+    margin: 0 12px;
+    width: -webkit-fill-available;
+    border-top: 1px solid #D3D3D3;
+    border-bottom: 1px solid #D3D3D3;
+}
+.userInfo{
+    display: flex;
+    justify-content: center;
+    margin: 12px 0;
+}
+.userInfo i{
+    font-size: 24px;
+}
+.userInfo p{
+    font-size: 12px;
+}

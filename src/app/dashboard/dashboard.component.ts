@@ -1,9 +1,8 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { AccountsComponent } from '../accounts/accounts.component';
-import { AlcanceComponent } from '../alcance/alcance.component';
-import { ResumenComponent } from '../resumen/resumen.component';
-import { SolucionComponent } from '../solucion/solucion.component';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { InicioComponent } from '../inicio/inicio.component';
+import { RegistroComponent } from '../registro/Registro.component';
 import { FormularioComponent } from '../MultiFormulario/formulario/formulario.component';
+import data from '../fakedata/users.json'
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -24,25 +23,22 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ])
   ]
 })
-export class DashboardComponent implements OnInit {
-  title = 'Home';
+export class DashboardComponent{
+  constructor(){ }
   navList = [
-    {title: 'Inicio', icon: 'fas fa-home'},
-    {title: 'Cuentas', icon: 'fas fa-user-circle'},
-    {title: 'Resumen', icon: 'fas fa-list-alt'},
-    {title: 'Solucion', icon: 'fas fa-check-square'},
-    {title: 'Alcance', icon: 'fas fa-chart-line'},
-    {title: 'Registro', icon: 'fas fa-id-card'}
+    {title: "Inicio", icon: "fas fa-home"},
+    {title: "Registro", icon: "fas fa-user"},
   ];
 
+  currentUsers=data;
+  admin = this.currentUsers[0]
+
   selectedItem: Number = 0;
-  constructor() { }
+
+  
 
   selectItem(index:Number): void {
     this.selectedItem = index;
     console.log(this.selectedItem);
   }
-  ngOnInit(): void {
-  }
-
 }

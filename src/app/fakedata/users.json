@@ -1,0 +1,29 @@
+[
+    {
+        "id": "01",
+        "EmpId": "123456",
+        "Nombre": "Daniel Sandoval",
+        "Correo": "danielsandoval@mail.com",
+        "Contrasena": "wero69",
+        "Puesto": "Gerente de Atraccion de Talento",
+        "Rol": "superadmin"
+    },
+    {
+        "id": "02",
+        "EmpId": "214365",
+        "Nombre": "Juan Perez",
+        "Correo": "juanperez@mail.com",
+        "Contrasena": "juanito88",
+        "Puesto": "Jede de RH",
+        "Rol": "admin"
+    },
+    {
+        "id": "03",
+        "EmpId": "615243",
+        "Nombre": "Pedrito Sola",
+        "Correo": "pedritosola@mail.com",
+        "Contrasena": "mcCormickHellmans!",
+        "Puesto": "Reclutador",
+        "Rol": "reclutador"
+    }
+]

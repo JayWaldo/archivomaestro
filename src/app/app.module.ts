@@ -5,11 +5,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AccountsComponent } from './accounts/accounts.component';
+import { RegistroComponent } from './registro/Registro.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { ResumenComponent } from './resumen/resumen.component';
-import { SolucionComponent } from './solucion/solucion.component';
-import { AlcanceComponent } from './alcance/alcance.component';
 import { FormularioComponent } from './MultiFormulario/formulario/formulario.component';
 import { ResumenFormComponent } from './MultiFormulario/resumen-form/resumen-form.component';
 import { InfraestructuraFormComponent } from './MultiFormulario/infraestructura-form/infraestructura-form.component';
@@ -19,16 +16,14 @@ import { CiberseguridadFormComponent } from './MultiFormulario/ciberseguridad-fo
 import { SeguridadFisicaFormComponent } from './MultiFormulario/seguridad-fisica-form/seguridad-fisica-form.component';
 import { IAFormComponent } from './MultiFormulario/iaform/iaform.component';
 import { FacturacionTotalFormComponent } from './MultiFormulario/facturacion-total-form/facturacion-total-form.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    AccountsComponent,
+    RegistroComponent,
     SearchBarComponent,
-    ResumenComponent,
-    SolucionComponent,
-    AlcanceComponent,
     FormularioComponent,
     ResumenFormComponent,
     InfraestructuraFormComponent,
@@ -37,7 +32,8 @@ import { FacturacionTotalFormComponent } from './MultiFormulario/facturacion-tot
     CiberseguridadFormComponent,
     SeguridadFisicaFormComponent,
     IAFormComponent,
-    FacturacionTotalFormComponent
+    FacturacionTotalFormComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
