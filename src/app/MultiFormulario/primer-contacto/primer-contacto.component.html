@@ -1,0 +1,85 @@
+<h1>{{title}}</h1>
+
+<div class="input-container">
+    <div class="select-container">
+        <label for="fecha">Fecha Primer Contacto Redes Sociales</label>
+        <div class="datePickerContainer">
+            <input id="fecha" type="text" matInput [matDatepicker]="pickerRedes" [(ngModel)]="data.fechaPrimerContactoRedesSociales">
+            <mat-datepicker-toggle matSuffix [for]="pickerRedes"></mat-datepicker-toggle>
+            <mat-datepicker #pickerRedes></mat-datepicker>
+        </div>
+    </div>
+    <div class="select-container">
+        <label for="fecha">Fecha Primer Contacto con Reclutador</label>
+        <div class="datePickerContainer">
+            <input id="fecha" type="text" matInput [matDatepicker]="pickerReclutador" [(ngModel)]="data.fechaPrimerContactoReclutador">
+            <mat-datepicker-toggle matSuffix [for]="pickerReclutador"></mat-datepicker-toggle>
+            <mat-datepicker #pickerReclutador></mat-datepicker>
+        </div>
+    </div>
+
+    <div class="select-container">Estatus Primer Contacto
+        <select name="dropEstatus" id="estatus" [(ngModel)]="this.data.estatusPrimerContacto">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of estatusList; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <!-- <div class="select-container">Reclutador
+        <select name="dropReclutador" id="reclutador" [(ngModel)]="this.data.reclutador">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <optgroup *ngFor="let grupo of getOptGrupos(); let i = index" [label]="grupo">
+                <option *ngFor="let opcion of getOpciones(grupo);" [value]="opcion">{{opcion}}</option>
+            </optgroup>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <label for="nombre">Nombre completo del Candidato
+        <input id="nombre" type="text" [(ngModel)]="this.data.nombre">
+    </label>
+    <label for="age">Edad del Candidato
+        <input id="age" type="number" [(ngModel)]="this.data.edad">
+    </label>
+    
+    <fieldset class="radio-section">
+        <legend>Genero</legend>
+        <div>
+            <input type="radio" id="masculino" name="genero" [value]="true" [(ngModel)]="this.data.genero">
+            <label for="masculino">Masculino</label>
+        </div>
+        <div>
+            <input type="radio" id="femenino" name="genero" [value]="false" [(ngModel)]="this.data.genero">
+            <label for="femenino">Femenino</label>
+        </div>
+    </fieldset>
+
+    <div class="select-container">Escolaridad
+        <select name="dropEscolaridad" id="escolaridad" [(ngModel)]="this.data.escolaridad">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of escolaridadList; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <label for="telefono">Telefono de contacto (Solo numeros)
+        <input id="telefono" type="tel" [(ngModel)]="this.data.telefono">
+    </label>
+    
+    <div class="select-container">Puesto Solicitado
+        <select name="dropPuesto" id="puesto" [(ngModel)]="this.data.puestoSolicitado">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of vacantes; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div> -->
+</div>

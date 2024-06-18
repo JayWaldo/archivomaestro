@@ -2,24 +2,19 @@ export interface IServicio{
     servicio: string;
     inversion: number;
 }
-export interface IResumen{
-    resumen: string,
-    website: string,
-    sector: string,
-    tamano: string,
-    presupuestoActual: number,
-    presupuestoAnterior: number,
-    presupuestoIT: number,
-    retos: string
+export interface IDatosCandidato{
+    fuente: string,
+    reclutador: string,
+    nombre: string,
+    edad: number,
+    genero: string,
+    escolaridad: string,
+    telefono: number,
+    puestoSolicitado: string
 }
-export interface Iinfraestructura{
-    presentoCliente : boolean,
-    facturaConNosotros: boolean,
-    facturaOtro: string,
-    redWanLan: number,
-    redSDWan: number,
-    redWifi: number,
-    redGpon: number
+export interface IRegion{
+    region : string,
+    sistema : string
 }
 export interface IColaboracion{
     presentoCliente : boolean,
@@ -55,11 +50,10 @@ export interface ISeguridadFisica{
     Videdovigilancia: number,
     ControlAccesos: number
 }
-export interface IinteligenciaArtificial{
-    presentoCliente : boolean,
-    facturaConNosotros: boolean,
-    facturaOtro: string,
-    IA: number
+export interface IPrimerContacto{
+    fechaPrimerContactoRedesSociales : Date,
+    fechaPrimerContactoReclutador : Date,
+    estatusPrimerContacto: string,
 }
 export interface IFacturacionTotal{
     TAM : number,

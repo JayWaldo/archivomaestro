@@ -7,5 +7,5 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PowerFront';
+  title = 'Archivo Maestro';
 }

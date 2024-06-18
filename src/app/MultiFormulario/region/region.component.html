@@ -1,0 +1,22 @@
+<h1>{{title}}</h1>
+    <div class="input-container">
+        <div class="select-container">Region
+            <select name="dropRegion" id="region" [(ngModel)]="data.region">
+                <option value="" disabled [selected]="true">Seleccione una opcion</option>
+                <option *ngFor="let item of facturaList; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+            </select>
+            <div class="angle-container">
+                <i class="fas fa-angle-down"></i>
+            </div>
+        </div>
+    
+        <div class="select-container">Sistema
+            <select name="dropSistema" id="sistema" [(ngModel)]="data.sistema">
+                <option value="" disabled [selected]="true">Seleccione una opcion</option>
+                <option *ngFor="let item of facturaList; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+            </select>
+            <div class="angle-container">
+                <i class="fas fa-angle-down"></i>
+            </div>
+        </div>
+    </div>

@@ -33,7 +33,7 @@ export class DashboardComponent{
   currentUsers=data;
   admin = this.currentUsers[0]
 
-  selectedItem: Number = 0;
+  selectedItem: Number = 1;
 
   
 

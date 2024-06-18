@@ -10,40 +10,20 @@
 </div>
 {{currentSection()}}
 <div *ngIf="currentPart === 1" class="container" @fadeInOut>
-    <app-resumen-form [data]="sectionsForm[0].dataComp"></app-resumen-form>
+    <app-region [data]="sectionsForm[0].dataComp"></app-region>
 </div>
 
 <div *ngIf="currentPart === 2" class="container" @fadeInOut>
-    <app-infraestructura-form [data]="sectionsForm[1].dataComp"></app-infraestructura-form>
+    <app-datos-candidato [data]="sectionsForm[1].dataComp"></app-datos-candidato>
 </div>
 
 <div *ngIf="currentPart === 3" class="container" @fadeInOut>
-    <app-colaboracion-form [data]="sectionsForm[2].dataComp"></app-colaboracion-form>
-</div>
-
-<div *ngIf="currentPart === 4" class="container" @fadeInOut>
-    <app-data-center-form [data]="sectionsForm[3].dataComp"></app-data-center-form>
-</div>
-
-<div *ngIf="currentPart === 5" class="container" @fadeInOut>
-    <app-ciberseguridad-form [data]="sectionsForm[4].dataComp"></app-ciberseguridad-form>
-</div>
-
-<div *ngIf="currentPart === 6" class="container" @fadeInOut>
-    <app-seguridad-fisica-form [data]="sectionsForm[5].dataComp"></app-seguridad-fisica-form>
-</div>
-
-<div *ngIf="currentPart === 7" class="container" @fadeInOut>
-    <app-iaform [data]="sectionsForm[6].dataComp"></app-iaform>
-</div>
-
-<div *ngIf="currentPart === 8" class="container" @fadeInOut>
-    <app-facturacion-total-form [data]="sectionsForm[7].dataComp"></app-facturacion-total-form>
+    <app-primer-contacto [data]="sectionsForm[2].dataComp"></app-primer-contacto>
 </div>
 
 <div class="buttons-container">
     <button *ngIf="currentPart > 1" (click) = "btnPrev()" @fadeInOut>Anterior</button>
     <button class="guardar" (click) = "saveCurrentSection()" @fadeInOut>Guardar</button>
-    <button *ngIf="currentPart === 8" class="enviar" @fadeInOut>Enviar</button>
-    <button *ngIf="currentPart < 8" (click) = "btnNext()" @fadeInOut>Siguiente</button>
+    <button *ngIf="currentPart === 7" class="enviar" @fadeInOut>Enviar</button>
+    <button *ngIf="currentPart < 7" (click) = "btnNext()" @fadeInOut>Siguiente</button>
 </div>
