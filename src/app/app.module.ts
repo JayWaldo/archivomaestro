@@ -18,6 +18,10 @@ import { DatosCandidatoComponent } from './MultiFormulario/datos-candidato/datos
 import { PrimerContactoComponent } from './MultiFormulario/primer-contacto/primer-contacto.component';
 import { registerLocaleData } from '@angular/common';
 import { SharedService } from './services/shared.service';
+import { PsicometriasEvaluacionesComponent } from './MultiFormulario/psicometrias-evaluaciones/psicometrias-evaluaciones.component';
+import { EstatusComponent } from './MultiFormulario/estatus/estatus.component';
+import { AltaComponent } from './MultiFormulario/alta/alta.component';
+import { EntrevistaComponent } from './MultiFormulario/entrevista/entrevista.component';
 registerLocaleData(localMx, 'es-Mx');
 
 @NgModule({
@@ -30,7 +34,11 @@ registerLocaleData(localMx, 'es-Mx');
     InicioComponent,
     RegionComponent,
     DatosCandidatoComponent,
-    PrimerContactoComponent
+    PrimerContactoComponent,
+    PsicometriasEvaluacionesComponent,
+    EstatusComponent,
+    AltaComponent,
+    EntrevistaComponent
   ],
   imports: [
     BrowserModule,

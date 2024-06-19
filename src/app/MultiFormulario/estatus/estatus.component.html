@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+
+<div class="input-container">
+    <div class="select-container">Estatus General
+        <select name="dropSindicato" id="sindicato" [(ngModel)]="this.data.estatusGeneral">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of dropOPciones; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+</div>

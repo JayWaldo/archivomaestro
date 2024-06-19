@@ -1,9 +1,13 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ICiberseguridad, IColaboracion, IDataCenter, IFacturacionTotal, IDatosCandidato, ISeguridadFisica, IRegion, IPrimerContacto } from '../Modelos';
+import { IAlta, IEntrevista, IPsicometriasEvaluacion, IEstatus, IDatosCandidato, IRegion, IPrimerContacto } from '../Modelos';
 import { RegionComponent } from '../region/region.component';
 import { DatosCandidatoComponent } from '../datos-candidato/datos-candidato.component';
 import { PrimerContactoComponent } from '../primer-contacto/primer-contacto.component';
+import { PsicometriasEvaluacionesComponent } from '../psicometrias-evaluaciones/psicometrias-evaluaciones.component';
+import { EntrevistaComponent } from '../entrevista/entrevista.component';
+import { EstatusComponent } from '../estatus/estatus.component';
+import { AltaComponent } from '../alta/alta.component';
 
 @Component({
   selector: 'app-formulario',
@@ -41,13 +45,21 @@ export class FormularioComponent implements AfterViewInit{
   @ViewChild(DatosCandidatoComponent) datosCandidatoComp!: DatosCandidatoComponent;
   @ViewChild(RegionComponent) regionComp!: RegionComponent;
   @ViewChild(PrimerContactoComponent) primerContactoComp!: PrimerContactoComponent;
+  @ViewChild(PsicometriasEvaluacionesComponent) psicoEvaComp!: PsicometriasEvaluacionesComponent;
+  @ViewChild(EntrevistaComponent) entrevistaComp!: EntrevistaComponent;
+  @ViewChild(EstatusComponent) estatusComp!: EstatusComponent;
+  @ViewChild(AltaComponent) altaComp!: AltaComponent;
 
   showPopUp = false;
-
+  
   sectionsForm = [
     {title: 'Region', checked: false, component: this.regionComp, dataComp: {} as any},
     {title: 'Datos Candidato', checked: false, component: this.datosCandidatoComp, dataComp: {} as any},
     {title: 'Primer Contacto', checked: false, component: this.primerContactoComp, dataComp: {} as any},
+    {title: 'Entrevista', checked: false, component: this.entrevistaComp, dataComp: {} as any},
+    {title: 'Psicometrias', checked: false, component: this.psicoEvaComp, dataComp: {} as any},
+    {title: 'Estatus', checked: false, component: this.estatusComp, dataComp: {} as any},
+    {title: 'Alta', checked: false, component: this.altaComp, dataComp: {} as any},
   ]
   ngAfterViewInit() {
   }
@@ -101,6 +113,14 @@ export class FormularioComponent implements AfterViewInit{
         return this.datosCandidatoComp;
       case 3:
         return this.primerContactoComp;
+      case 4:
+        return this.entrevistaComp;
+      case 5:
+        return this.psicoEvaComp;
+      case 6:
+        return this.estatusComp;
+      case 7:
+        return this.altaComp;
       default:
         return null;
     }

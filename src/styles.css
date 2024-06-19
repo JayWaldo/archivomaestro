@@ -150,12 +150,7 @@ select:focus + .angle-container{
 .datePickerContainer input{
     width: 100%;
 }
-/* .datePickerContainer mat-datepicker-toggle{
-    transition: .5s;
-    border-radius: 4px;
+.select-container .labelPicker{
+    width: 100%;
+    margin: 0;
 }
-.datePickerContainer mat-datepicker-toggle :hover{
-    background-color: #53aceb;
-    border-radius: 4px;
-    transition: .5s;
-} */

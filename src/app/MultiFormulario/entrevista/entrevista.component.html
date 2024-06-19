@@ -1,0 +1,79 @@
+<h1>{{title}}</h1>
+
+<div class="input-container">
+
+    <fieldset class="radio-section">
+        <legend>Cita para Entrevista</legend>
+        <div>
+            <input type="radio" id="si" name="entrevista" [value]="true" [(ngModel)]="this.data.citaEntrevista">
+            <label for="si">Si</label>
+        </div>
+        <div>
+            <input type="radio" id="no" name="entrevista" [value]="false" [(ngModel)]="this.data.citaEntrevista">
+            <label for="no">No</label>
+        </div>
+    </fieldset>
+
+    <div class="select-container">
+        <label for="fechaErEntrevista" class="labelPicker">Fecha Primer Entrevista</label>
+        <div class="datePickerContainer">
+            <input id="fechaErEntrevista" type="text" matInput [matDatepicker]="pickerErEntrevista" [(ngModel)]="data.fechaPrimerEntrevista">
+            <mat-datepicker-toggle matSuffix [for]="pickerErEntrevista"></mat-datepicker-toggle>
+            <mat-datepicker #pickerErEntrevista></mat-datepicker>
+        </div>
+    </div>
+
+    <div class="select-container">Tipo de Candidato
+        <select name="dropCandidato" id="candidato" [(ngModel)]="this.data.tipoCandidato">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('tipoCandidato'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div class="select-container">Tipo de Entrevista
+        <select name="dropEntrevista" id="entrevista" [(ngModel)]="this.data.tipoEntrevista">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('tipoEntrevista'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div class="select-container">Estatus Primera Entrevista
+        <select name="dropErEntrevista" id="primerEntrevista" [(ngModel)]="this.data.estatusPrimerEntrevista">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('estatusEntrevista'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+    
+    <label for="supervisor">Nombre completo del Candidato
+        <input id="supervisor" type="text" [(ngModel)]="this.data.nombreSupervisor">
+    </label>
+    
+    <div class="select-container">Estatus Segunda Entrevista
+        <select name="dropDaEntrevista" id="segundaEntrevista" [(ngModel)]="this.data.estatusSegundaEntrevista">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('estatusEntrevista'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+    
+    <div class="select-container">Validacion del Sindicato
+        <select name="dropSindicato" id="sindicato" [(ngModel)]="this.data.validacionSindicato">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('validacionSindicato'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+</div>

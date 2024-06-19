@@ -1,12 +1,14 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { IPrimerContacto } from '../Modelos';
+import { SharedService } from 'src/app/services/shared.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-primer-contacto',
   templateUrl: './primer-contacto.component.html',
   styleUrls: ['./primer-contacto.component.css']
 })
-export class PrimerContactoComponent{
+export class PrimerContactoComponent implements OnInit{
 
   @Input() data : IPrimerContacto= {
     fechaPrimerContactoRedesSociales : new Date(),
@@ -14,6 +16,9 @@ export class PrimerContactoComponent{
     estatusPrimerContacto: '',
   }
   title = "Primer Contacto"
+  mensajeFuente?: string;
+  subscipcion?: Subscription;
+
   estatusList = [
     'RECHAZADO',
     'NO RESPONDIO',
@@ -28,16 +33,23 @@ export class PrimerContactoComponent{
     console.log(this.data);
   }
 
-  constructor() {
+  constructor(private servicioCompartido: SharedService) {
+
   }
 
-  // willShow(){
-  //   console.log(this.fuenteIndex + ' fue la opcion');
-  //   if(this.fuenteIndex == 19 || this.fuenteIndex ==
-  //   20){
-  //     return true
-  //   } else {
-  //     return false
-  //   }
-  // }
+ ngOnInit(): void {
+   this.subscipcion = this.servicioCompartido.mensaje$.subscribe(msj => {
+    this.mensajeFuente = msj;
+   })
+ }
+
+  willShow(){
+    if(this.mensajeFuente === 'REDES SOCIALES EMPLEOS MEGA' || this.mensajeFuente ===
+    'REDES SOCIALES RECLUTADOR'){
+      return true
+    } else {
+      return false
+    }
+  }
 }
+    

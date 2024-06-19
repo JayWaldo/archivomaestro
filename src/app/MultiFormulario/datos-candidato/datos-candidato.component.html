@@ -2,7 +2,8 @@
 
 <div class="input-container">
     <div class="select-container">Fuente de Captacion
-        <select name="dropFuente" id="fuente" [(ngModel)]="this.data.fuente">
+        <select name="dropFuente" id="fuente" [(ngModel)]="this.data.fuente"
+        (change)="onChangeMsj($event)">
             <option value="" disabled [selected]="true">Seleccione una opción</option>
             <option *ngFor="let item of fuentesCaptacion; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
         </select>

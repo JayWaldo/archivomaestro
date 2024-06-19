@@ -47,13 +47,18 @@ section{
     border-bottom: 1px solid #D3D3D3;
 }
 .userInfo{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 1fr;
     justify-content: center;
     margin: 12px 0;
 }
 .userInfo i{
+    grid-column: 1;
+    grid-row: span 2;
+    align-self: center;
     font-size: 24px;
 }
 .userInfo p{
-    font-size: 12px;
+    font-size: 10px;
 }

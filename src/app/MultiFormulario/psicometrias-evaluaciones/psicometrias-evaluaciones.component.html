@@ -1,0 +1,103 @@
+<h1>{{title}}</h1>
+
+<div class="input-container">
+
+    <div class="select-container">Estatus General Psicometria
+        <select name="dropPsico" id="estatus" [(ngModel)]="this.data.estatusGeneral">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('estatus'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div class="select-container">Integritest
+        <select name="dropIntegritest" id="integritest" [(ngModel)]="this.data.integritest">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('integritest'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div class="select-container">Avatar
+        <select name="dropAvatar" id="avatar" [(ngModel)]="this.data.avatar">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('psicometricas'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div class="select-container">Potencial Intelectual
+        <select name="dropPotencial" id="potencial" [(ngModel)]="this.data.potencialIntelectual">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('psicometricas'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div class="select-container">Terman
+        <select name="dropTerman" id="terman" [(ngModel)]="this.data.terman">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('psicometricas'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+    <div class="select-container">Reddin
+        <select name="dropReddin" id="reddin" [(ngModel)]="this.data.reddin">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('psicometricas'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div class="select-container">Circulo Laboral
+        <select name="dropCirculoLaboral" id="circuloLaboral" [(ngModel)]="this.data.circuloLaboral">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('circuloLaboral'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div class="select-container">Referencias Laborales
+        <select name="dropReferencias" id="referencias" [(ngModel)]="this.data.referenciasLaborales">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('referenciasLaborales'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div class="select-container">Estudio Socieconomico
+        <select name="dropSocio" id="socioeconomico" [(ngModel)]="this.data.estudioSocioEconomico">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('socioeconomico'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+    
+    <div class="select-container">Examen de Manejo
+        <select name="dropManejo" id="examManejo" [(ngModel)]="this.data.examenManejo">
+            <option value="" disabled [selected]="true">Seleccione una opción</option>
+            <option *ngFor="let item of getOpciones('examManejo'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
+        </select>
+        <div class="angle-container">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+</div>

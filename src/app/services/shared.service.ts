@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-  private fuenteSubject = new BehaviorSubject<string>('');
-  fuente$ = this.fuenteSubject.asObservable();
+  private enviarMsjSujeto = new BehaviorSubject<string>('');
+  mensaje$ = this.enviarMsjSujeto.asObservable();
 
-  actualizarFuente(nuevaFuente: string){
-    this.fuenteSubject.next(nuevaFuente);
+  enviarMensaje(mensaje: string){
+    this.enviarMsjSujeto.next(mensaje);
   }
-  enviarFuente(){
-    return this.fuenteSubject;
-  }
-  constructor() { }
+
 }

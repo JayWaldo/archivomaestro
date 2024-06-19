@@ -21,9 +21,25 @@
     <app-primer-contacto [data]="sectionsForm[2].dataComp"></app-primer-contacto>
 </div>
 
+<div *ngIf="currentPart === 4" class="container" @fadeInOut>
+    <app-entrevista [data]="sectionsForm[3].dataComp"></app-entrevista>
+</div>
+
+<div *ngIf="currentPart === 5" class="container" @fadeInOut>
+    <app-psicometrias-evaluaciones [data]="sectionsForm[4].dataComp"></app-psicometrias-evaluaciones>
+</div>
+
+<div *ngIf="currentPart === 6" class="container" @fadeInOut>
+    <app-estatus [data]="sectionsForm[5].dataComp"></app-estatus>
+</div>
+
+<div *ngIf="currentPart === 7" class="container" @fadeInOut>
+    <app-alta [data]="sectionsForm[6].dataComp"></app-alta>
+</div>
+
 <div class="buttons-container">
     <button *ngIf="currentPart > 1" (click) = "btnPrev()" @fadeInOut>Anterior</button>
     <button class="guardar" (click) = "saveCurrentSection()" @fadeInOut>Guardar</button>
-    <button *ngIf="currentPart === 7" class="enviar" @fadeInOut>Enviar</button>
+    <button *ngIf="currentPart === 8" class="enviar" @fadeInOut>Enviar</button>
     <button *ngIf="currentPart < 7" (click) = "btnNext()" @fadeInOut>Siguiente</button>
 </div>

@@ -1,6 +1,6 @@
-export interface IServicio{
-    servicio: string;
-    inversion: number;
+export interface IRegion{
+    region : string,
+    sistema : string
 }
 export interface IDatosCandidato{
     fuente: string,
@@ -12,57 +12,38 @@ export interface IDatosCandidato{
     telefono: number,
     puestoSolicitado: string
 }
-export interface IRegion{
-    region : string,
-    sistema : string
-}
-export interface IColaboracion{
-    presentoCliente : boolean,
-    facturaConNosotros: boolean,
-    facturaOtro: string,
-    PBXpremisas: number,
-    PBXaasNube: number,
-    UCaas: number
-}
-export interface IDataCenter{
-    presentoCliente : boolean,
-    facturaConNosotros: boolean,
-    facturaOtro: string,
-    Colocacion: number,
-    InfraPremisas: number,
-    Nube: number
-}
-export interface ICiberseguridad{
-    presentoCliente : boolean,
-    facturaConNosotros: boolean,
-    facturaOtro: string,
-    SOCass: number,
-    SASE: number,
-    ISA: number,
-    XDR: number,
-    Consultoria: number
-}
-export interface ISeguridadFisica{
-    presentoCliente : boolean,
-    facturaConNosotros: boolean,
-    facturaOtro: string,
-    c2c3c4c5: number,
-    Videdovigilancia: number,
-    ControlAccesos: number
-}
 export interface IPrimerContacto{
     fechaPrimerContactoRedesSociales : Date,
     fechaPrimerContactoReclutador : Date,
     estatusPrimerContacto: string,
 }
-export interface IFacturacionTotal{
-    TAM : number,
-    InfraRed: number,
-    Colaboracion: number,
-    DataCenter: number,
-    Ciberseguridad: number,
-    SeguridadFisica: number,
-    IA: number,
-    SolucionesPortafolio: boolean,
-    Servicio: IServicio[]
+export interface IEntrevista{
+    citaEntrevista : boolean,
+    fechaPrimerEntrevista : Date,
+    tipoCandidato: string,
+    tipoEntrevista: string,
+    estatusPrimerEntrevista: string,
+    nombreSupervisor: string,
+    estatusSegundaEntrevista: string,
+    validacionSindicato: string,
+}
+export interface IPsicometriasEvaluacion{
+    estatusGeneral : string,
+    integritest: string,
+    avatar: string,
+    potencialIntelectual: string,
+    terman: string,
+    reddin: string,
+    circuloLaboral: string,
+    referenciasLaborales: string,
+    estudioSocioEconomico: string,
+    examenManejo: string
+}
+export interface IEstatus{
+    estatusGeneral : string
+}
+export interface IAlta{
+    fechCierreFolio: Date,
+    fechaINgreso: Date,
+    promDiasCobertura: number,
 }

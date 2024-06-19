@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { IDatosCandidato } from '../Modelos';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-datos-candidato',
@@ -9,6 +10,7 @@ import { IDatosCandidato } from '../Modelos';
 export class DatosCandidatoComponent implements OnInit {
 
   title = "Datos del Candidato"
+  mensajeFuente?: string;
   escolaridadList = [
     'PRIMARIA TERMINADA',
     'PRIMARIA TRUNCA',
@@ -72,7 +74,9 @@ export class DatosCandidatoComponent implements OnInit {
     puestoSolicitado: ""
   }
 
-  constructor() { }
+  constructor(private servicioCompartido: SharedService) {
+
+   }
 
   ngOnInit(): void {
   }
@@ -82,7 +86,10 @@ export class DatosCandidatoComponent implements OnInit {
   getOpciones(grupo: string){
     return this.optGrupos[grupo];
   }
-
+  onChangeMsj(event: any){
+    this.mensajeFuente = event.target.value;
+    this.servicioCompartido.enviarMensaje(this.mensajeFuente!);
+  }
   saveData(){
     console.log(this.data);
   }

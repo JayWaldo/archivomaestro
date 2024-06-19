@@ -1,0 +1,23 @@
+<h1>{{title}}</h1>
+
+<div class="input-container">
+
+    <div class="select-container">
+        <label for="fechaCierre" class="labelPicker">Fecha de Cierre de Folio</label>
+        <div class="datePickerContainer">
+            <input id="fechaCierre" type="text" matInput [matDatepicker]="pickerCierre" [(ngModel)]="data.fechCierreFolio">
+            <mat-datepicker-toggle matSuffix [for]="pickerCierre"></mat-datepicker-toggle>
+            <mat-datepicker #pickerCierre></mat-datepicker>
+        </div>
+    </div>
+
+    <div class="select-container">
+        <label for="fechaIngreso" class="labelPicker">Fecha de Ingreso</label>
+        <div class="datePickerContainer">
+            <input id="fechaIngreso" type="text" matInput [matDatepicker]="pickerIngreso" [(ngModel)]="data.fechaINgreso">
+            <mat-datepicker-toggle matSuffix [for]="pickerIngreso"></mat-datepicker-toggle>
+            <mat-datepicker #pickerIngreso></mat-datepicker>
+        </div>
+    </div>
+
+</div>
