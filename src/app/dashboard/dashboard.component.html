@@ -3,9 +3,14 @@
     <ul>
         <li
             *ngFor="let item of navList; let i = index"
-            [ngClass] ="{'active' : selectedItem === i}"
-            (click)= "selectItem(i)">
-            <a [title]="item.title"><i [class]="item.icon"></i>{{item.title}}</a>
+            [ngClass] ="{'active' : selectedItem === item.route}"
+            (click)= "selectItem(item.route)">
+            <a 
+            [routerLink]="item.route"
+            routerLinkActive="active-link"
+            [title]="item.title" >
+                <i [class]="item.icon"></i>{{item.title}}
+            </a>
         </li>
     </ul>
     <div class="bottomWrapper">
@@ -17,6 +22,6 @@
     </div>
 </nav>
 <section class="dashboard">
-    <app-inicio *ngIf="selectedItem === 0" class="" @fadeInOut></app-inicio>
-    <app-registro *ngIf="selectedItem === 1" class="accounts" @fadeInOut></app-registro>
+    <router-outlet>
+    </router-outlet>
 </section>

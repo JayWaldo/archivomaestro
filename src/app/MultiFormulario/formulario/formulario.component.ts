@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { IAlta, IEntrevista, IPsicometriasEvaluacion, IEstatus, IDatosCandidato, IRegion, IPrimerContacto } from '../Modelos';
 import { RegionComponent } from '../region/region.component';
@@ -8,6 +8,8 @@ import { PsicometriasEvaluacionesComponent } from '../psicometrias-evaluaciones/
 import { EntrevistaComponent } from '../entrevista/entrevista.component';
 import { EstatusComponent } from '../estatus/estatus.component';
 import { AltaComponent } from '../alta/alta.component';
+import { SharedService } from 'src/app/services/shared.service';
+import { CandidatoData } from 'src/app/fakedata/dbTemporal';
 
 @Component({
   selector: 'app-formulario',
@@ -41,7 +43,7 @@ import { AltaComponent } from '../alta/alta.component';
     ])
   ]
 })
-export class FormularioComponent implements AfterViewInit{
+export class FormularioComponent implements OnInit ,AfterViewInit{
   @ViewChild(DatosCandidatoComponent) datosCandidatoComp!: DatosCandidatoComponent;
   @ViewChild(RegionComponent) regionComp!: RegionComponent;
   @ViewChild(PrimerContactoComponent) primerContactoComp!: PrimerContactoComponent;
@@ -60,7 +62,11 @@ export class FormularioComponent implements AfterViewInit{
     {title: 'Psicometrias', checked: false, component: this.psicoEvaComp, dataComp: {} as any},
     {title: 'Estatus', checked: false, component: this.estatusComp, dataComp: {} as any},
     {title: 'Alta', checked: false, component: this.altaComp, dataComp: {} as any},
-  ]
+  ];
+  constructor(private servicioCompartido: SharedService){}
+  ngOnInit(): void {
+      this.currentSection();
+  }
   ngAfterViewInit() {
   }
 
@@ -105,6 +111,25 @@ export class FormularioComponent implements AfterViewInit{
       this.sectionsForm[this.currentPart - 1].dataComp = currentComponent.data;
     }
   }
+
+  sendData(){
+    let candidatoData = new CandidatoData();
+    candidatoData = this.getFormDataAll();
+
+    this.servicioCompartido.enviarDatos(candidatoData);
+    console.log(candidatoData);
+  }
+
+  getFormDataAll(){
+    const dataForm = new CandidatoData();
+    dataForm.region = this.sectionsForm[0].dataComp;
+    dataForm.datosCandidato = this.sectionsForm[1].dataComp;
+    dataForm.primerContacto = this.sectionsForm[2].dataComp;
+    dataForm.entrevista = this.sectionsForm[3].dataComp;
+    dataForm.psicometricas = this.sectionsForm[4].dataComp;
+    return dataForm;
+  }
+
   getCurrentComponent(){
     switch (this.currentPart){
       case 1:

@@ -22,6 +22,9 @@ import { PsicometriasEvaluacionesComponent } from './MultiFormulario/psicometria
 import { EstatusComponent } from './MultiFormulario/estatus/estatus.component';
 import { AltaComponent } from './MultiFormulario/alta/alta.component';
 import { EntrevistaComponent } from './MultiFormulario/entrevista/entrevista.component';
+import { CandidatosComponent } from './candidatos/candidatos.component';
+import { AppRoutingModule } from './app-routing.module';
+
 registerLocaleData(localMx, 'es-Mx');
 
 @NgModule({
@@ -38,9 +41,11 @@ registerLocaleData(localMx, 'es-Mx');
     PsicometriasEvaluacionesComponent,
     EstatusComponent,
     AltaComponent,
-    EntrevistaComponent
+    EntrevistaComponent,
+    CandidatosComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

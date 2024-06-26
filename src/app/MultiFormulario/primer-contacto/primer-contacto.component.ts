@@ -38,8 +38,8 @@ export class PrimerContactoComponent implements OnInit{
   }
 
  ngOnInit(): void {
-   this.subscipcion = this.servicioCompartido.mensaje$.subscribe(msj => {
-    this.mensajeFuente = msj;
+    this.subscipcion = this.servicioCompartido.mensaje$.subscribe(msj => {
+      this.mensajeFuente = msj;
    })
  }
 

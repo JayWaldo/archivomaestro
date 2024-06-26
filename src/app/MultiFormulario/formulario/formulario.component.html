@@ -8,7 +8,6 @@
     <p>Guardado</p>
     <i class="fas fa-check"></i>
 </div>
-{{currentSection()}}
 <div *ngIf="currentPart === 1" class="container" @fadeInOut>
     <app-region [data]="sectionsForm[0].dataComp"></app-region>
 </div>
@@ -42,4 +41,5 @@
     <button class="guardar" (click) = "saveCurrentSection()" @fadeInOut>Guardar</button>
     <button *ngIf="currentPart === 8" class="enviar" @fadeInOut>Enviar</button>
     <button *ngIf="currentPart < 7" (click) = "btnNext()" @fadeInOut>Siguiente</button>
+    <button *ngIf="currentPart === 7" (click) = "sendData()" @fadeInOut>Enviar</button>
 </div>

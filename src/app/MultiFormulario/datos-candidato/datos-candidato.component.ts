@@ -48,7 +48,7 @@ export class DatosCandidatoComponent implements OnInit {
     'VOLANTE'
   ]
   optGrupos: {[key: string]: string[]} = {
-    'Reclutador' : ['opcion'],
+    'Reclutador' : ['Fernando', 'Roberto'],
     'Generalista RH' : ['opcion'],
     'Coordinador de Reclutamiento y Seleccion' : ['opcion'],
     'Jefe de RH' : ['opcion'],
