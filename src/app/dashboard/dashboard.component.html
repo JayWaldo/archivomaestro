@@ -13,15 +13,16 @@
             </a>
         </li>
     </ul>
-    <div class="bottomWrapper">
-        <div class="userInfo">
+    <div class="bottomWrapper" *ngIf="currentUser">
+        <div class="userInfo" >
             <i class="fas fa-id-card"></i>
-            <p>{{admin.Nombre}}</p>
-            <p>{{admin.Correo}}</p>
+            <p>{{currentUser.nombre}}</p>
+            <p>{{currentUser.correo}}</p>
+            <button class="logOut" (click)="logOut()">Salir</button>
         </div>
     </div>
 </nav>
 <section class="dashboard">
-    <router-outlet>
+    <router-outlet @fadeInOut>
     </router-outlet>
 </section>

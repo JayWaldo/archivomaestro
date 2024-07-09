@@ -1,7 +1,3 @@
-export interface IRegion{
-    region : string,
-    sistema : string
-}
 export interface IDatosCandidato{
     fuente: string,
     reclutador: string,
@@ -13,13 +9,13 @@ export interface IDatosCandidato{
     puestoSolicitado: string
 }
 export interface IPrimerContacto{
-    fechaPrimerContactoRedesSociales : Date,
-    fechaPrimerContactoReclutador : Date,
+    fechaPrimerContactoRedesSociales : any,
+    fechaPrimerContactoReclutador : any,
     estatusPrimerContacto: string,
 }
 export interface IEntrevista{
     citaEntrevista : boolean,
-    fechaPrimerEntrevista : Date,
+    fechaPrimerEntrevista : any,
     tipoCandidato: string,
     tipoEntrevista: string,
     estatusPrimerEntrevista: string,
@@ -43,7 +39,45 @@ export interface IEstatus{
     estatusGeneral : string
 }
 export interface IAlta{
-    fechCierreFolio: Date,
-    fechaINgreso: Date,
+    fechCierreFolio: any,
+    fechaIngreso: any,
     promDiasCobertura: number,
+}
+export interface User {
+    email: string;
+    token: string;
+}
+export interface IRH{
+    idUsuarioRH: number;
+    regionId: number;
+    nombre: string;
+    puesto: string;
+    rol: string;
+    permisos: number;
+    contrasena: string;
+    correo: string;
+}
+export interface ICandidato{
+    idCandidato: number;
+    nombre: string;
+    edad: number;
+    genero: string;
+    escolaridad: string;
+    telefono: string;
+    puestoSolicitado: string;
+    fuenteCaptacion: string;
+    reclutadorId: number;
+    primerContactoRedesSociales: string;
+    primerContactoReclutador: string;
+    estatusPrimerContacto: string;
+    estatusGeneral: string;
+    fechaCierreFolio: Date;
+    fechaIngreso: Date;
+    promDiasCobertura: number;
+    region: number;
+}
+export interface IRegion{
+    idRegion: number;
+    region: string;
+    sistema: string;
 }

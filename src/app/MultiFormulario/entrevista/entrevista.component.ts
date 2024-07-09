@@ -34,6 +34,16 @@ export class EntrevistaComponent implements OnInit {
     return this.dropOpciones[grupo];
   }
   saveData(){
+    const fechaEntrevista = this.formatDate(this.data.fechaPrimerEntrevista);
+    this.data.fechaPrimerEntrevista = fechaEntrevista;
     console.log(this.data);
+  }
+  formatDate(date: any): string {
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) return '';
+    const day = parsedDate.getDate().toString().padStart(2, '0');
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
+    const year = parsedDate.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 }

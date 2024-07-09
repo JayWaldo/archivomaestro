@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { InicioComponent } from '../inicio/inicio.component';
 import { RegistroComponent } from '../registro/Registro.component';
 import { FormularioComponent } from '../MultiFormulario/formulario/formulario.component';
@@ -6,6 +6,9 @@ import { CandidatosComponent } from '../candidatos/candidatos.component';
 import data from '../fakedata/users.json'
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { IRH } from '../MultiFormulario/Modelos';
+import { RHService } from '../services/rh.service';
 
 @Component({
   selector: 'dashboard',
@@ -31,14 +34,28 @@ export class DashboardComponent implements OnInit,AfterViewInit{
     {title: "Candidatos", icon: "fas fa-user", route: "/candidatos" },
     {title: "Registro", icon: "fas fa-file-alt", route: "/registro" },
   ];
+  currentUser !: IRH;
+  selectedItem: string = '/inicio';
   
-  constructor(private router: Router, private route: ActivatedRoute){ }
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private rhService: RHService, 
+    private authService: AuthService){
+  }
+
   ngOnInit(): void {
       this.router.events.subscribe(event => {
         if(event instanceof NavigationEnd){
           this.updateSelectedItem(event.url);
         }
       })
+
+      if(this.authService.isLoggedIn()){
+        this.fetchRHInfo();
+      } else {
+        this.router.navigate(['/login']);
+      }
   }
   ngAfterViewInit(): void {
       if(this.router.url !== '/inicio'){
@@ -46,9 +63,21 @@ export class DashboardComponent implements OnInit,AfterViewInit{
       }
   }
 
-  currentUsers=data;
-  admin = this.currentUsers[0]
-  selectedItem: string = '/inicio';
+  fetchRHInfo(){
+    const email = this.authService.getEmail()
+    if(email !== null){
+      this.rhService.getRHinfo(email).subscribe(
+        (rh: IRH) => {
+          this.currentUser = rh;
+        },
+        (error) => {
+          console.error('Error al traer informacion ' + error);
+        }
+      )
+    } else {
+      console.error('Correo electronico no encontrado en localStorage.');
+    }
+  }
 
   selectItem(route: string): void {
     this.selectedItem = route;
@@ -60,5 +89,8 @@ export class DashboardComponent implements OnInit,AfterViewInit{
     if(updateUrl){
       this.selectedItem = updateUrl.route;
     }
+  }
+  logOut(){
+    this.authService.logout();
   }
 }

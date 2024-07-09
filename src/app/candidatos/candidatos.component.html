@@ -1,26 +1,26 @@
-<div>
+<div @fadeInOut>
     <h1 class="title">{{title}}</h1>
 </div>
-<div class="contentContainer">
+<div class="contentContainer" @fadeInOut>
     <h2>Candidatos registrados</h2>
-    <table *ngIf="candidatosList[0] !== null">
-        <tr>
+    <table *ngIf="candidatosList.length !== 0" class="table">
+        <tr class="titles">
             <th>Nombre</th>
             <th>Progreso</th>
             <th>Estatus</th>
             <th>Opciones</th>
         </tr>
         <tr *ngFor="let cand of candidatosList; let i = index">
-            <td>{{cand.datosCandidato?.nombre}}</td>
+            <td>{{cand.nombre}}</td>
             <td>Progreso</td>
-            <td>Estatus</td>
-            <td>
-                <button>Editar</button>
-                <button>Eliminar</button>
+            <td>{{cand.estatusGeneral}}</td>
+            <td class="buttonContainer">
+                <button class="edit">Editar</button>
+                <button class="delete" (click)="eliminarRegistro(i)">Eliminar</button>
             </td>
         </tr>
     </table>
-    <div class="optWrapper" *ngIf="candidatosList[0] === null">
+    <div class="optWrapper" *ngIf="candidatosList.length === 0">
         <p>Aun no hay registros!</p>
         <button (click)="goToRegistro()" class="agregar">
             <span>Agregar nuevo candidato</span><i class="fas fa-plus"></i>

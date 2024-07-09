@@ -58,8 +58,9 @@ section{
 .userInfo{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     justify-content: center;
+    align-items: center;
     margin: 12px 0;
 }
 .userInfo i{
@@ -70,4 +71,11 @@ section{
 }
 .userInfo p{
     font-size: 10px;
+}
+.userInfo .logOut{
+    grid-column: span 2;
+    border: none;
+    border-radius: 2px;
+    margin-top: 2px;
+    cursor: pointer;
 }

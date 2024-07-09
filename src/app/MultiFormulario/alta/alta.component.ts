@@ -11,7 +11,7 @@ export class AltaComponent implements OnInit {
   title = 'Alta'
   @Input() data : IAlta = {
     fechCierreFolio: new Date(),
-    fechaINgreso: new Date(),
+    fechaIngreso: new Date(),
     promDiasCobertura: 0,
   }
   constructor() { }
@@ -19,6 +19,18 @@ export class AltaComponent implements OnInit {
   }
 
   saveData(){
+    const fechaCierre = this.formatDate(this.data.fechCierreFolio);
+    const fechaIngreso = this.formatDate(this.data.fechaIngreso);
+    this.data.fechCierreFolio = fechaCierre;
+    this.data.fechaIngreso = fechaIngreso;
     console.log(this.data);
+  }
+  formatDate(date: any): string {
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) return '';
+    const day = parsedDate.getDate().toString().padStart(2, '0');
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
+    const year = parsedDate.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 }

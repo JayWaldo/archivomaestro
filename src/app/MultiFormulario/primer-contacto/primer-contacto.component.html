@@ -12,7 +12,7 @@
     <div class="select-container">
         <label for="fechaReclutador" class="labelPicker">Fecha Primer Contacto con Reclutador</label>
         <div class="datePickerContainer">
-            <input id="fechaReclutador" type="text" matInput [matDatepicker]="pickerReclutador" [(ngModel)]="data.fechaPrimerContactoReclutador">
+            <input id="fechaReclutador" type="text" matInput [matDatepicker]="pickerReclutador" [(ngModel)]="data.fechaPrimerContactoReclutador" >
             <mat-datepicker-toggle matSuffix [for]="pickerReclutador"></mat-datepicker-toggle>
             <mat-datepicker #pickerReclutador></mat-datepicker>
         </div>
