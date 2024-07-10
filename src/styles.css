@@ -146,6 +146,16 @@ select:focus + .angle-container{
     background-color: #6caa0f;
     transition: .4s;
 }
+.table .buttonContainer .excel{
+    font-size: 15px;
+    padding: 5px;
+    background-color: #487406;
+    transition: .4s;
+}
+.table .buttonContainer .excel:hover{
+    background-color: #8fdd1a;
+    transition: .4s;
+}
 .table .buttonContainer .delete:hover{
     background-color: #c92020;
     transition: .4s;

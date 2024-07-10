@@ -16,6 +16,7 @@ import { CandidatoService } from 'src/app/services/candidato.service';
 import { EntrevistaService } from 'src/app/services/entrevista.service';
 import { PsicometriasService } from 'src/app/services/psicometrias.service';
 import { RegionService } from 'src/app/services/region.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -59,6 +60,7 @@ export class FormularioComponent implements OnInit ,AfterViewInit{
   @ViewChild(AltaComponent) altaComp!: AltaComponent;
 
   currentRh ?: IRH;
+  currentCandidato?: ICandidato;
   candidatoData = new CandidatoData();
 
   showPopUp = false;
@@ -74,6 +76,7 @@ export class FormularioComponent implements OnInit ,AfterViewInit{
   ];
   constructor(
     private servicioCompartido: SharedService,
+    private router: Router,
     private authService: AuthService,
     private rhService: RHService,
     private regionService: RegionService,
@@ -130,12 +133,19 @@ export class FormularioComponent implements OnInit ,AfterViewInit{
     }
   }
 
-  sendData(){
-    this.candidatoData = this.getFormDataAll();
-
-    this.servicioCompartido.enviarDatos(this.candidatoData);
-    console.log(this.candidatoData);
-    this.sendCandidato();
+  async sendData() {
+    try {
+      this.candidatoData = this.getFormDataAll();
+      this.servicioCompartido.enviarDatos(this.candidatoData);
+      console.log(this.candidatoData);
+  
+      await this.sendCandidato();
+      this.sendEntrevista();
+      this.sendPsicometrias();
+      this.router.navigate(['/candidatos'])
+    } catch (error) {
+      console.error('Error en el envío de datos: ', error);
+    }
   }
 
   getFormDataAll(){
@@ -187,48 +197,105 @@ export class FormularioComponent implements OnInit ,AfterViewInit{
     }
   }
 
-  sendCandidato(){
-    console.log(this.currentRh)
-    console.log(this.candidatoData.datosCandidato)
-    console.log(this.candidatoData.primerContacto)
-    console.log(this.candidatoData.estatus)
-    console.log(this.candidatoData.alta)
-    console.log(this.candidatoData.region)
-    if(this.currentRh && 
-      this.candidatoData.datosCandidato &&
-      this.candidatoData.primerContacto &&
-      this.candidatoData.estatus &&
-      this.candidatoData.alta &&
-      this.candidatoData.region){
-      let candidato : ICandidato = {
-        idCandidato: 0,
-        nombre: this.candidatoData.datosCandidato.nombre,
-        edad: this.candidatoData.datosCandidato.edad,
-        genero: this.candidatoData.datosCandidato.genero,
-        escolaridad: this.candidatoData.datosCandidato.escolaridad,
-        telefono: this.candidatoData.datosCandidato.telefono.toString(),
-        puestoSolicitado: this.candidatoData.datosCandidato.puestoSolicitado,
-        fuenteCaptacion: this.candidatoData.datosCandidato.fuente,
-        reclutadorId: this.currentRh?.idUsuarioRH,
-        primerContactoRedesSociales: this.candidatoData.primerContacto.fechaPrimerContactoRedesSociales,
-        primerContactoReclutador: this.candidatoData.primerContacto.fechaPrimerContactoReclutador,
-        estatusPrimerContacto: this.candidatoData.primerContacto.estatusPrimerContacto,
-        estatusGeneral: this.candidatoData.estatus.estatusGeneral,
-        fechaCierreFolio: this.candidatoData.alta.fechCierreFolio,
-        fechaIngreso: this.candidatoData.alta.fechaIngreso,
-        promDiasCobertura: this.candidatoData.alta.promDiasCobertura,
-        region: this.candidatoData.region.idRegion
+  sendCandidato(): Promise<ICandidato> {
+    return new Promise((resolve, reject) => {
+      if (this.currentRh &&
+        this.candidatoData.datosCandidato &&
+        this.candidatoData.primerContacto &&
+        this.candidatoData.estatus &&
+        this.candidatoData.alta &&
+        this.candidatoData.region) {
+        let candidato: ICandidato = {
+          idCandidato: 0,
+          nombre: this.candidatoData.datosCandidato.nombre,
+          edad: this.candidatoData.datosCandidato.edad,
+          genero: this.candidatoData.datosCandidato.genero,
+          escolaridad: this.candidatoData.datosCandidato.escolaridad,
+          telefono: this.candidatoData.datosCandidato.telefono.toString(),
+          puestoSolicitado: this.candidatoData.datosCandidato.puestoSolicitado,
+          fuenteCaptacion: this.candidatoData.datosCandidato.fuente,
+          reclutadorId: this.currentRh.idUsuarioRH,
+          primerContactoRedesSociales: this.candidatoData.primerContacto.fechaPrimerContactoRedesSociales,
+          primerContactoReclutador: this.candidatoData.primerContacto.fechaPrimerContactoReclutador,
+          estatusPrimerContacto: this.candidatoData.primerContacto.estatusPrimerContacto,
+          estatusGeneral: this.candidatoData.estatus.estatusGeneral,
+          fechaCierreFolio: this.candidatoData.alta.fechCierreFolio,
+          fechaIngreso: this.candidatoData.alta.fechaIngreso,
+          promDiasCobertura: this.candidatoData.alta.promDiasCobertura,
+          region: this.candidatoData.region.idRegion
+        }
+        this.candidatoService.addCandidato(candidato).subscribe(
+          (res) => {
+            console.log('Candidato enviado exitosamente: ' + res);
+            this.currentCandidato = res;
+            resolve(res);
+          }, (error) => {
+            console.error('Error al enviar ' + error);
+            reject(error);
+          }
+          )
+        } else {
+          console.log("faltan datos o algo salio mal en Candidato");
+          reject("faltan datos o algo salio mal");
+        }
+    });
+  }
+
+
+  sendEntrevista(){
+    if(this.currentRh &&
+      this.currentCandidato &&
+      this.candidatoData.entrevista
+    ){
+      const entrevista : IEntrevista = {
+        idCandidato : this.currentCandidato.idCandidato,
+        citaEntrevista: this.candidatoData.entrevista.citaEntrevista,
+        fechaPrimerEntrevista: this.candidatoData.entrevista.fechaPrimerEntrevista,
+        tipoCandidato: this.candidatoData.entrevista.tipoCandidato,
+        tipoEntrevista: this.candidatoData.entrevista.tipoEntrevista,
+        estatusPrimerEntrevista: this.candidatoData.entrevista.estatusPrimerEntrevista,
+        nombreSupervisor: this.candidatoData.entrevista.nombreSupervisor,
+        estatusSegundaEntrevista: this.candidatoData.entrevista.estatusSegundaEntrevista,
+        validacionSindicato: this.candidatoData.entrevista.validacionSindicato
       }
-      console.log(candidato);
-      this.candidatoService.addCandidato(candidato).subscribe(
+      this.entrevistaService.addEntrevista(entrevista).subscribe(
         (res) => {
-          console.log('Candidato enviado exitosamente: ' + res);
+          console.log('Entrevista enviada exitosamente ' + res);
         }, (error) => {
-          console.error('Error al enviar ' + error);
+          console.error('Error al enviar entrevista ' + error)
         }
       )
     } else {
-      console.log("faltan datos o algo salio mal");
+      console.log('faltan datos o algo salio mal en Entrevista');
+    }
+  }
+
+  sendPsicometrias(){
+    if(this.currentCandidato &&
+      this.candidatoData.psicometricas
+    ){
+      const psicometriasData : IPsicometriasEvaluacion = {
+        IdCandidato: this.currentCandidato.idCandidato,
+        estatusGeneral : this.candidatoData.psicometricas.estatusGeneral,
+        integritest: this.candidatoData.psicometricas.integritest,
+        avatar: this.candidatoData.psicometricas.avatar,
+        potencialIntelectual: this.candidatoData.psicometricas.potencialIntelectual,
+        terman: this.candidatoData.psicometricas.terman,
+        reddin: this.candidatoData.psicometricas.reddin,
+        circuloLaboral: this.candidatoData.psicometricas.circuloLaboral,
+        referenciasLaborales: this.candidatoData.psicometricas.referenciasLaborales,
+        estudioSocioEconomico: this.candidatoData.psicometricas.estudioSocioEconomico,
+        examenManejo: this.candidatoData.psicometricas.examenManejo
+      }
+      this.psicoService.addPsicometrias(psicometriasData).subscribe(
+        (res) => {
+          console.log('Psicometrias enviadas exitosamente');
+        }, (error) => {
+          console.error('Error al enviar psicometrias ' + error);
+        }
+      )
+    } else {
+      console.log('Algo salio mal con los datos para Psicometrias');
     }
   }
 }

@@ -15,8 +15,9 @@
             <td>Progreso</td>
             <td>{{cand.estatusGeneral}}</td>
             <td class="buttonContainer">
-                <button class="edit">Editar</button>
-                <button class="delete" (click)="eliminarRegistro(i)">Eliminar</button>
+                <button class="edit"><i class="fas fa-pen"></i></button>
+                <button class="delete" (click)="eliminarRegistro(i)"><i class="fas fa-trash-alt"></i></button>
+                <button class="excel"><i class="fas fa-file-excel"></i></button>
             </td>
         </tr>
     </table>

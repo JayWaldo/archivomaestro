@@ -2,14 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IPrimerContacto } from '../Modelos';
 import { SharedService } from 'src/app/services/shared.service';
 import { Subscription } from 'rxjs';
-import { DatePipe, formatDate } from '@angular/common';
-import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-primer-contacto',
   templateUrl: './primer-contacto.component.html',
   styleUrls: ['./primer-contacto.component.css'],
-  providers: [DatePipe]
 })
 export class PrimerContactoComponent implements OnInit{
 
@@ -35,15 +32,14 @@ export class PrimerContactoComponent implements OnInit{
   saveData(){
     const fechaRedes = this.formatDate(this.data.fechaPrimerContactoRedesSociales);
     const fechaReclutador = this.formatDate(this.data.fechaPrimerContactoReclutador);
-    this.data.fechaPrimerContactoReclutador = fechaReclutador;
+    this.data.fechaPrimerContactoReclutador = fechaReclutador ? fechaReclutador : '';
     this.data.fechaPrimerContactoRedesSociales = fechaRedes;
     console.log(fechaRedes, fechaReclutador);
     console.log(this.data);
   }
 
   constructor(
-    private servicioCompartido: SharedService,
-    private datePipe: DatePipe) { 
+    private servicioCompartido: SharedService) { 
     }
 
  ngOnInit(): void {

@@ -27,6 +27,18 @@ export class CandidatoService {
     return this.http.get<ICandidato[]>(url);
   }
 
+  getCandidatoByName(rhId: number, name: string): Observable<ICandidato>{
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    const url = `${this.api}/candidato/${rhId}/find?name=${name}`;
+
+    return this.http.get<ICandidato>(url, { headers });
+  }
+
+  
   addCandidato(candidato: ICandidato): Observable<ICandidato>{
     const token = this.authService.getToken();
     const headers = new HttpHeaders({

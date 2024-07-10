@@ -14,6 +14,7 @@ export interface IPrimerContacto{
     estatusPrimerContacto: string,
 }
 export interface IEntrevista{
+    idCandidato: number,
     citaEntrevista : boolean,
     fechaPrimerEntrevista : any,
     tipoCandidato: string,
@@ -24,6 +25,7 @@ export interface IEntrevista{
     validacionSindicato: string,
 }
 export interface IPsicometriasEvaluacion{
+    IdCandidato: number,
     estatusGeneral : string,
     integritest: string,
     avatar: string,

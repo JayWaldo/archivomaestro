@@ -12,7 +12,6 @@ export class CandidatoData{
     alta?: IAlta;
 
     constructor() {
-        this.id = this.generarIdTemp();
     }
 
     generarIdTemp(){

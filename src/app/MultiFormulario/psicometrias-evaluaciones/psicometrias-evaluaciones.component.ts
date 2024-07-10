@@ -9,6 +9,7 @@ import { IPsicometriasEvaluacion } from '../Modelos';
 export class PsicometriasEvaluacionesComponent implements OnInit {
   title = 'Psicometrias y Evaluaciones'
   @Input() data : IPsicometriasEvaluacion= {
+    IdCandidato: 0,
     estatusGeneral : '',
     integritest: '',
     avatar: '',
