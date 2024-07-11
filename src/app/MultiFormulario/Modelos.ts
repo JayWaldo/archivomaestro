@@ -83,3 +83,13 @@ export interface IRegion{
     region: string;
     sistema: string;
 }
+
+export interface ICandidatoTabla{
+    Id: number;
+    Nombre: string;
+    Region: string;
+    Sistema: string;
+    Reclutador: string;
+    Progreso: number;
+    Estatus: string;
+}

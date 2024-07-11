@@ -10,10 +10,10 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import localMx from '@angular/common/locales/en-Gb'
 import { HttpClientModule } from '@angular/common/http';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegistroComponent } from './registro/Registro.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FormularioComponent } from './MultiFormulario/formulario/formulario.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { RegionComponent } from './MultiFormulario/region/region.component';
@@ -38,7 +38,6 @@ registerLocaleData(localMx, 'en-GB');
     AppComponent,
     DashboardComponent,
     RegistroComponent,
-    SearchBarComponent,
     FormularioComponent,
     InicioComponent,
     RegionComponent,
@@ -50,7 +49,7 @@ registerLocaleData(localMx, 'en-GB');
     EntrevistaComponent,
     CandidatosComponent,
     EditarComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -63,7 +62,8 @@ registerLocaleData(localMx, 'en-GB');
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
-    GridModule
+    GridModule,
+    MatPaginatorModule
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}, SharedService],
   bootstrap: [AppComponent]

@@ -2,6 +2,9 @@
     padding-bottom: 12px;
     border-bottom: 1px solid #CCCCCC;
 }
+h2{
+    margin-top: 12px;
+}
 .optWrapper{
     display: flex;
     align-items: center;

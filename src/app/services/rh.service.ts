@@ -20,5 +20,14 @@ export class RHService {
 
     return this.http.get<IRH>(`${this.api}/rh/find?mail=${email}`, { headers });
   }
+  
+  getRHById(rhId: number): Observable<IRH>{
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<IRH>(`${this.api}/rh/${rhId}`, { headers });
+  }
 
 }
