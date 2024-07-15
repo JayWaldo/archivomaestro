@@ -36,6 +36,9 @@ export class CandidatosComponent implements OnInit, AfterViewInit {
   candidatosList: ICandidato[] = [];
   tableData: ICandidatoTabla[] = [];
   columnNames: string[] = ['Id', 'Nombre', 'Region', 'Sistema', 'Reclutador', 'Progreso', 'Estatus', 'Opciones'];
+  opcionesPagina = [5, 10, 20]
+  noPaginas = 5;
+  currentPagina = 0;
   
 
   constructor(
@@ -118,7 +121,9 @@ export class CandidatosComponent implements OnInit, AfterViewInit {
   calcularProgreso(candidato: ICandidato): number{
     let progreso = 0;
 
-
+    if(candidato.estatusGeneral){
+      progreso = 100
+    }
 
     return progreso
   }
@@ -138,7 +143,6 @@ export class CandidatosComponent implements OnInit, AfterViewInit {
           Progreso: this.calcularProgreso(candi),
           Estatus: candi.estatusGeneral
         }
-        console.log(candidato);
         this.tableData.push(candidato);
       }
     } catch (error){
@@ -157,5 +161,27 @@ export class CandidatosComponent implements OnInit, AfterViewInit {
     if(index > -1 && index < this.candidatosList.length){
       this.candidatosList.splice(index, 1);
     }
+  }
+
+  startIndex(): number{
+    return this.currentPagina * this.noPaginas;
+  }
+  endIndex(): number{
+    return Math.min(this.startIndex() + this.noPaginas, this.tableData.length);
+  }
+
+  nextPage(){
+    this.currentPagina++;
+  }
+  prevPage(){
+    this.currentPagina--;
+  }
+
+  hasPrevPage(): boolean{
+    return this.currentPagina !== 0;
+  }
+
+  hasNextPage(): boolean{
+    return (this.currentPagina + 1) * this.noPaginas < this.tableData.length
   }
 }

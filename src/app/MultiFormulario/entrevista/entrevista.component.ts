@@ -38,7 +38,7 @@ export class EntrevistaComponent implements OnInit {
   }
   saveData(){
     const fechaEntrevista = this.formatDate(this.data.fechaPrimerEntrevista);
-    this.data.fechaPrimerEntrevista = fechaEntrevista;
+    this.data.fechaPrimerEntrevista = new Date(fechaEntrevista);
     console.log(this.data);
   }
   formatDate(date: any): string {

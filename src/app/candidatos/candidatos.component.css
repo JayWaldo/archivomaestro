@@ -35,3 +35,31 @@ button:hover{
 .agregar span{
     border-right: 1px solid white;
 }
+.pagination{
+    display: flex;
+    justify-content: flex-end;
+    padding: 6px;
+    gap: 12px;
+}
+.pagination button{
+    background: none;
+    color: black;
+    width: 1rem;
+    height: auto;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination button:hover{
+    background-color: #afadad;
+}
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.page-size-select{
+    display: flex;
+    align-items: center;
+    font-size: .9rem;
+}

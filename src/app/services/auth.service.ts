@@ -11,6 +11,7 @@ export class AuthService {
   private api = 'https://localhost:7153';
   private loggedInSubject = new BehaviorSubject<boolean>(false);
   public authStatus = this.loggedInSubject.asObservable();
+  apiStatus = false;
 
   constructor(private http: HttpClient, private router: Router) {
     this.loggedInSubject.next(this.isLoggedIn());
@@ -50,5 +51,21 @@ export class AuthService {
     } else{
       return false;
     }
+  }
+
+  checkApiConnection() {
+    this.http.get(`${this.api}/ping`).subscribe(
+      () => {
+        console.log('API is working');
+        this.apiStatus = true;
+        this.loggedInSubject.next(this.isLoggedIn());
+      },
+      error => {
+        console.error('API is not listening', error);
+        this.apiStatus = false;
+        this.loggedInSubject.next(false);
+        this.router.navigate(['/login']);
+      }
+    );
   }
 }

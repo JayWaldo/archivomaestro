@@ -9,8 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import localMx from '@angular/common/locales/en-Gb'
 import { HttpClientModule } from '@angular/common/http';
-import { GridModule } from '@progress/kendo-angular-grid';
-import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegistroComponent } from './registro/Registro.component';
@@ -61,9 +59,7 @@ registerLocaleData(localMx, 'en-GB');
     MatNativeDateModule,
     HttpClientModule,
     CommonModule,
-    ReactiveFormsModule,
-    GridModule,
-    MatPaginatorModule
+    ReactiveFormsModule
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}, SharedService],
   bootstrap: [AppComponent]

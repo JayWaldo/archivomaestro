@@ -32,5 +32,6 @@ export class AppComponent implements OnInit{
       this.authService.authStatus.subscribe( status => {
         this.loggedIn = status;
       });
+
   }
 }

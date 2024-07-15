@@ -3,38 +3,55 @@
 </div>
 <div class="contentContainer" @fadeInOut>
     <h2>Candidatos registrados</h2>
-    <table *ngIf="candidatosList.length !== 0" class="table">
-        <thead>
-            <tr class="titles">
-                <th>{{columnNames[0]}}</th>
-                <th>{{columnNames[1]}}</th>
-                <th>{{columnNames[2]}}</th>
-                <th>{{columnNames[3]}}</th>
-                <th>{{columnNames[4]}}</th>
-                <th>{{columnNames[5]}}</th>
-                <th>{{columnNames[6]}}</th>
-                <th>{{columnNames[7]}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let cand of tableData; let i = index" class="dataRow">
-                <td>{{cand.Id}}</td>
-                <td>{{cand.Nombre}}</td>
-                <td>{{cand.Region}}</td>
-                <td>{{cand.Sistema}}</td>
-                <td>{{cand.Reclutador}}</td>
-                <td>{{cand.Progreso}}</td>
-                <td>{{cand.Estatus}}</td>
-                <td class="buttonContainer">
-                    <div class="buttonWrapper">
-                        <button class="edit" (click)="editarRegistro(cand.Id)"><i class="fas fa-pen"></i></button>
-                        <button class="delete" (click)="eliminarRegistro(i)"><i class="fas fa-trash-alt"></i></button>
-                        <button class="excel"><i class="fas fa-file-excel"></i></button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="tableContainer">
+        <table *ngIf="candidatosList.length !== 0" class="table">
+            <thead>
+                <tr class="titles">
+                    <th>No.</th>
+                    <th>{{columnNames[0]}}</th>
+                    <th>{{columnNames[1]}}</th>
+                    <th>{{columnNames[2]}}</th>
+                    <th>{{columnNames[3]}}</th>
+                    <th>{{columnNames[4]}}</th>
+                    <th>{{columnNames[5]}}</th>
+                    <th>{{columnNames[6]}}</th>
+                    <th>{{columnNames[7]}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cand of tableData.slice(startIndex(), endIndex()); let i = index" class="dataRow">
+                    <td>{{tableData.indexOf(cand) + 1}}</td>
+                    <td>{{cand.Id}}</td>
+                    <td>{{cand.Nombre}}</td>
+                    <td>{{cand.Region}}</td>
+                    <td>{{cand.Sistema}}</td>
+                    <td>{{cand.Reclutador}}</td>
+                    <td>{{cand.Progreso}}%</td>
+                    <td>{{cand.Estatus}}</td>
+                    <td class="buttonContainer">
+                        <div class="buttonWrapper">
+                            <button class="edit" (click)="editarRegistro(cand.Id)"><i class="fas fa-pen"></i></button>
+                            <button class="delete" (click)="eliminarRegistro(i)"><i class="fas fa-trash-alt"></i></button>
+                            <button class="excel"><i class="fas fa-file-excel"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- paginacion -->
+        <div class="pagination">
+            <div class="page-size-select">
+                <label for="pageSizeSelect">Registros por página</label>
+                <select id="pageSizeSelect" [(ngModel)]="noPaginas">
+                  <option *ngFor="let option of opcionesPagina" [value]="option">{{ option }}</option>
+                </select>
+            </div>
+            <button class="prevBtn" [disabled]="!hasPrevPage()" (click)="prevPage()"><i class="fas fa-caret-left"></i></button>
+            <p>{{currentPagina + 1}}</p>
+            <button class="nextBtn" [disabled]="!hasNextPage()" (click)="nextPage()"><i class="fas fa-caret-right"></i></button>
+        </div>
+    </div>
 
     <div class="optWrapper" *ngIf="candidatosList.length === 0">
         <p>Aun no hay registros!</p>
