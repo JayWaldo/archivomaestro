@@ -71,8 +71,9 @@ export class EntrevistaComponent implements OnInit {
 
   saveData() {
     const formValue = this.entrevistaForm.value;
-    const fechaEntrevista = this.formatDate(formValue.fechaPrimerEntrevista);
-    formValue.fechaPrimerEntrevista = new Date(fechaEntrevista);
+    // const fechaEntrevista = this.formatDate(formValue.fechaPrimerEntrevista);
+    // formValue.fechaPrimerEntrevista = fechaEntrevista;
+    this.data = this.entrevistaForm.value;
     console.log(formValue);
 
     this.saveFormState();

@@ -8,7 +8,7 @@ import { IPsicometriasEvaluacion } from '../Modelos';
 })
 export class PsicometriasEvaluacionesComponent implements OnInit {
   title = 'Psicometrias y Evaluaciones'
-  isCompleted: boolean = false;
+  isCompleted: boolean = true;
 
   @Input() data : IPsicometriasEvaluacion= {
     IdCandidato: 0,
@@ -24,7 +24,7 @@ export class PsicometriasEvaluacionesComponent implements OnInit {
     examenManejo: ''
   }
   dropOpciones : {[key: string]: string[]}= {
-    'estatus': ['APROBADA', 'NO APROBADA'],
+    'estatus': ['APROBADA', 'NO APRUEBA INTEGRITEST', 'NO APRUEBA TT', 'NO APRUEBA AVATAR', 'NO APRUEBA POTENCIAL INTELECTUAL', 'NO APRUEBA TERMAN', 'NO APRUEBA REDDIN'],
     'integritest': ['RECOMENDADO', 'SE REQUIERE ACLARACION', 'MARGINAL', 'NO RECOMENDABLE', 'SIN RESULTADOS'],
     'psicometricas': ['APROBADA', 'NO APROBADA', 'NO LE APLICA AL PUESTO'],
     'circuloLaboral': ['CON RECOMENDACION', 'CON CONSTANCIA'],

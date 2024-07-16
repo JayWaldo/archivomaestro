@@ -126,7 +126,7 @@ export class DatosCandidatoComponent implements OnInit {
     this.servicioCompartido.enviarMensaje(this.mensajeFuente!);
   }
   saveData(){
-    const formValue = this.datosCandForm.value;
+    this.data = this.datosCandForm.value
     console.log(this.data);
     this.saveFormState();
   }

@@ -78,7 +78,7 @@ export class RegionComponent implements OnInit{
 
   
   saveData(){
-    const formValue = this.regionForm.value;
+    // this.data = this.regionForm.value;
     console.log(this.data);
     this.saveFormState();
   }

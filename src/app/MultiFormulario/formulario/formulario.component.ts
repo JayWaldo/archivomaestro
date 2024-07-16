@@ -286,12 +286,12 @@ export class FormularioComponent implements OnInit ,AfterViewInit{
       const psicometriasData : IPsicometriasEvaluacion = {
         IdCandidato: this.currentCandidato.idCandidato,
         estatusGeneral : this.candidatoData.psicometricas.estatusGeneral,
-        integritest: this.candidatoData.psicometricas.integritest,
-        avatar: this.candidatoData.psicometricas.avatar,
-        potencialIntelectual: this.candidatoData.psicometricas.potencialIntelectual,
-        terman: this.candidatoData.psicometricas.terman,
-        reddin: this.candidatoData.psicometricas.reddin,
-        circuloLaboral: this.candidatoData.psicometricas.circuloLaboral,
+        integritest: this.candidatoData.psicometricas.estatusGeneral,
+        avatar: this.candidatoData.psicometricas.estatusGeneral,
+        potencialIntelectual: this.candidatoData.psicometricas.estatusGeneral,
+        terman: this.candidatoData.psicometricas.estatusGeneral,
+        reddin: this.candidatoData.psicometricas.estatusGeneral,
+        circuloLaboral: this.candidatoData.psicometricas.referenciasLaborales,
         referenciasLaborales: this.candidatoData.psicometricas.referenciasLaborales,
         estudioSocioEconomico: this.candidatoData.psicometricas.estudioSocioEconomico,
         examenManejo: this.candidatoData.psicometricas.examenManejo

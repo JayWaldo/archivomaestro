@@ -3,7 +3,7 @@
 <div class="input-container">
 
     <div class="select-container">Estatus General Psicometria
-        <select name="dropPsico" id="estatus" [(ngModel)]="this.data.estatusGeneral">
+        <select name="dropPsico" id="estatus" [(ngModel)]="data.estatusGeneral">
             <option value="" disabled [selected]="true">Seleccione una opción</option>
             <option *ngFor="let item of getOpciones('estatus'); let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
         </select>

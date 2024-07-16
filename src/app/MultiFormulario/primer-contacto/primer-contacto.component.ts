@@ -88,7 +88,9 @@ export class PrimerContactoComponent implements OnInit, OnDestroy {
   }
 
   private checkAllFieldsFilled() {
-    this.isCompleted = Object.values(this.primerContactoForm.value).every(field => field !== '');
+    this.isCompleted = Object.entries(this.primerContactoForm.value)
+      .filter(([key]) => key !== 'fechaPrimerContactoRedesSociales')
+      .every(([key, value]) => value !== '' && value !== null && value !== undefined);
   }
 
   saveData() {
@@ -98,6 +100,7 @@ export class PrimerContactoComponent implements OnInit, OnDestroy {
       fechaPrimerContactoRedesSociales: fechaRedes,
       fechaPrimerContactoReclutador: fechaReclutador ? fechaReclutador : ''
     });
+    this.data = this.primerContactoForm.value;
     console.log(this.primerContactoForm.value);
   }
 }
