@@ -7,20 +7,20 @@
         <table *ngIf="candidatosList.length !== 0" class="table">
             <thead>
                 <tr class="titles">
-                    <th>No.</th>
-                    <th>{{columnNames[0]}}</th>
-                    <th>{{columnNames[1]}}</th>
-                    <th>{{columnNames[2]}}</th>
-                    <th>{{columnNames[3]}}</th>
-                    <th>{{columnNames[4]}}</th>
-                    <th>{{columnNames[5]}}</th>
-                    <th>{{columnNames[6]}}</th>
-                    <th>{{columnNames[7]}}</th>
+                    <th *ngFor="let column of columnNames" (click)="sortData(column)">
+                        <span class="column-header">
+                            {{ column }}
+                            <i *ngIf="sortColumn === column" class="fas" [ngClass]="{
+                                'fa-long-arrow-alt-up': sortDirection === 'asc',
+                                'fa-long-arrow-alt-down': sortDirection === 'desc'
+                            }"></i>
+                        </span>
+                      </th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let cand of tableData.slice(startIndex(), endIndex()); let i = index" class="dataRow">
-                    <td>{{tableData.indexOf(cand) + 1}}</td>
+                    <td>{{cand.No}}</td>
                     <td>{{cand.Id}}</td>
                     <td>{{cand.Nombre}}</td>
                     <td>{{cand.Region}}</td>

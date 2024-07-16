@@ -35,10 +35,12 @@ export class CandidatosComponent implements OnInit, AfterViewInit {
   currentUser ?: IRH;
   candidatosList: ICandidato[] = [];
   tableData: ICandidatoTabla[] = [];
-  columnNames: string[] = ['Id', 'Nombre', 'Region', 'Sistema', 'Reclutador', 'Progreso', 'Estatus', 'Opciones'];
+  columnNames: string[] = ['No', 'Id', 'Nombre', 'Region', 'Sistema', 'Reclutador', 'Progreso', 'Estatus', 'Opciones'];
   opcionesPagina = [5, 10, 20]
   noPaginas = 5;
   currentPagina = 0;
+  sortColumn: string = '';
+  sortDirection: 'asc' | 'desc' = 'asc';
   
 
   constructor(
@@ -135,6 +137,7 @@ export class CandidatosComponent implements OnInit, AfterViewInit {
         const sistema = await this.getSistemaByRegionId(candi.region);
         const reclutador = await this.cargarReclutadorDelCandidato(candi.reclutadorId);
         let candidato : ICandidatoTabla = {
+          No: 0,
           Id: candi.idCandidato,
           Nombre: candi.nombre,
           Region: region,
@@ -144,6 +147,7 @@ export class CandidatosComponent implements OnInit, AfterViewInit {
           Estatus: candi.estatusGeneral
         }
         this.tableData.push(candidato);
+        this.tableData[this.tableData.indexOf(candidato)].No = this.tableData.indexOf(candidato) + 1;
       }
     } catch (error){
       console.error(error);
@@ -184,4 +188,30 @@ export class CandidatosComponent implements OnInit, AfterViewInit {
   hasNextPage(): boolean{
     return (this.currentPagina + 1) * this.noPaginas < this.tableData.length
   }
+
+  sortData(column: string) {
+    if (this.sortColumn === column) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortColumn = column;
+      this.sortDirection = 'asc';
+    }
+  
+    this.tableData.sort((a, b) => {
+      let comparison = 0;
+      const valueA = a[column as keyof ICandidatoTabla];
+      const valueB = b[column as keyof ICandidatoTabla];
+
+      if (typeof valueA === 'string' && typeof valueB === 'string') {
+        comparison = valueA.localeCompare(valueB);
+      } else if (typeof valueA === 'number' && typeof valueB === 'number') {
+        comparison = valueA - valueB;
+      } else {
+        comparison = valueA > valueB ? 1 : valueA < valueB ? -1 : 0;
+      }
+  
+      return this.sortDirection === 'asc' ? comparison : -comparison;
+    });
+  }
+  
 }

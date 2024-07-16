@@ -87,6 +87,7 @@ export interface IRegion{
 }
 
 export interface ICandidatoTabla{
+    No: number;
     Id: number;
     Nombre: string;
     Region: string;

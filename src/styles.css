@@ -107,13 +107,33 @@ select:focus + .angle-container{
 .tableContainer{
     box-shadow: 0px 0px 3px 3px #ECECEC;
     border-radius: 4px;
+    margin-top: 24px;
+    overflow-y: auto;
+
+}
+.tableContainer::-webkit-scrollbar {
+    height: 6px;
+}
+
+.tableContainer::-webkit-scrollbar-thumb {
+    background-color: #D3D3D3;
+    border-radius: 10px;
+    border: none;
+}
+
+.tableContainer::-webkit-scrollbar-thumb:hover {
+    background-color: #9e9b9b;
+}
+
+.tableContainer::-webkit-scrollbar-track {
+    background-color: #ECECEC;
+    border-radius: 10px;
 }
 .table {
     width: 100%;
-    margin-top: 24px;
     border: 1px solid #ECECEC;
     border-radius: 4px 4px 0 0;
-    overflow: hidden; /* Para evitar que el borde doble se muestre al hacer hover */
+    overflow: hidden;
     border-collapse: collapse;
 }
 
@@ -126,6 +146,14 @@ select:focus + .angle-container{
 .table .titles th {
     padding: 12px;
     text-align: left;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+.titles th .column-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .table .dataRow td {
