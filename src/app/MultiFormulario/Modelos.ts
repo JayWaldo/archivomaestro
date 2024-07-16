@@ -2,6 +2,7 @@ export interface IDatosCandidato{
     fuente: string,
     reclutador: string,
     nombre: string,
+    Rfc: string,
     edad: number,
     genero: string,
     escolaridad: string,
@@ -77,6 +78,7 @@ export interface ICandidato{
     fechaIngreso: Date;
     promDiasCobertura: number;
     region: number;
+    Rfc: string;
 }
 export interface IRegion{
     idRegion: number;

@@ -1,69 +1,73 @@
 <h1>{{title}}</h1>
 
-<div class="input-container">
-    <div class="select-container">Fuente de Captacion
-        <select name="dropFuente" id="fuente" [(ngModel)]="this.data.fuente"
-        (change)="onChangeMsj($event)">
-            <option value="" disabled [selected]="true">Seleccione una opción</option>
-            <option *ngFor="let item of fuentesCaptacion; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
-        </select>
-        <div class="angle-container">
-            <i class="fas fa-angle-down"></i>
-        </div>
+<form [formGroup]="datosCandForm">
+  <div class="input-container">
+    <div class="select-container" [ngClass]="{'error': !datosCandForm.controls['fuente'].valid && datosCandForm.controls['fuente'].touched}">Fuente de Captacion
+      <select formControlName="fuente" id="fuente" (change)="onChangeMsj($event)">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option *ngFor="let item of fuentesCaptacion" [value]="item">{{item}}</option>
+      </select>
+      <div class="angle-container">
+        <i class="fas fa-angle-down"></i>
+      </div>
     </div>
 
-    <div class="select-container">Reclutador
-        <select name="dropReclutador" id="reclutador" [(ngModel)]="this.data.reclutador">
-            <option value="" disabled [selected]="true">Seleccione una opción</option>
-            <optgroup *ngFor="let grupo of getOptGrupos(); let i = index" [label]="grupo">
-                <option *ngFor="let opcion of getOpciones(grupo);" [value]="opcion">{{opcion}}</option>
-            </optgroup>
-        </select>
-        <div class="angle-container">
-            <i class="fas fa-angle-down"></i>
-        </div>
+    <div class="select-container" [ngClass]="{'error': !datosCandForm.controls['reclutador'].valid && datosCandForm.controls['reclutador'].touched}">Reclutador
+      <select formControlName="reclutador" id="reclutador">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <optgroup *ngFor="let grupo of getOptGrupos()" [label]="grupo">
+          <option *ngFor="let opcion of getOpciones(grupo)" [value]="opcion">{{opcion}}</option>
+        </optgroup>
+      </select>
+      <div class="angle-container">
+        <i class="fas fa-angle-down"></i>
+      </div>
     </div>
 
-    <label for="nombre">Nombre completo del Candidato
-        <input id="nombre" type="text" [(ngModel)]="this.data.nombre">
+    <label for="nombre" [ngClass]="{'error': !datosCandForm.controls['nombre'].valid && datosCandForm.controls['nombre'].touched}">Nombre completo del Candidato
+      <input id="nombre" type="text" formControlName="nombre">
     </label>
     <label for="age">Edad del Candidato
-        <input id="age" type="number" [(ngModel)]="this.data.edad">
+      <input id="age" type="number" formControlName="edad">
+    </label>
+    <label for="rfc">Rfc del candidato
+      <input id="rfc" type="text" formControlName="Rfc">
     </label>
     
     <fieldset class="radio-section">
-        <legend>Genero</legend>
-        <div>
-            <input type="radio" id="masculino" name="genero" value="Masculino" [(ngModel)]="this.data.genero">
-            <label for="masculino">Masculino</label>
-        </div>
-        <div>
-            <input type="radio" id="femenino" name="genero" value="Femenino" [(ngModel)]="this.data.genero">
-            <label for="femenino">Femenino</label>
-        </div>
+      <legend>Genero</legend>
+      <div>
+        <input type="radio" id="masculino" name="genero" value="Masculino" formControlName="genero">
+        <label for="masculino">Masculino</label>
+      </div>
+      <div>
+        <input type="radio" id="femenino" name="genero" value="Femenino" formControlName="genero">
+        <label for="femenino">Femenino</label>
+      </div>
     </fieldset>
 
     <div class="select-container">Escolaridad
-        <select name="dropEscolaridad" id="escolaridad" [(ngModel)]="this.data.escolaridad">
-            <option value="" disabled [selected]="true">Seleccione una opción</option>
-            <option *ngFor="let item of escolaridadList; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
-        </select>
-        <div class="angle-container">
-            <i class="fas fa-angle-down"></i>
-        </div>
+      <select formControlName="escolaridad" id="escolaridad">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option *ngFor="let item of escolaridadList" [value]="item">{{item}}</option>
+      </select>
+      <div class="angle-container">
+        <i class="fas fa-angle-down"></i>
+      </div>
     </div>
 
     <label for="telefono">Telefono de contacto (Solo numeros)
-        <input id="telefono" type="tel" [(ngModel)]="this.data.telefono">
+      <input id="telefono" type="tel" formControlName="telefono">
     </label>
     
     <div class="select-container">Puesto Solicitado
-        <select name="dropPuesto" id="puesto" [(ngModel)]="this.data.puestoSolicitado">
-            <option value="" disabled [selected]="true">Seleccione una opción</option>
-            <option *ngFor="let item of vacantes; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
-        </select>
-        <div class="angle-container">
-            <i class="fas fa-angle-down"></i>
-        </div>
+      <select formControlName="puestoSolicitado" id="puesto">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option *ngFor="let item of vacantes" [value]="item">{{item}}</option>
+      </select>
+      <div class="angle-container">
+        <i class="fas fa-angle-down"></i>
+      </div>
     </div>
-</div>
+  </div>
+</form>

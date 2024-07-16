@@ -216,3 +216,7 @@ select:focus + .angle-container{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.error select, .input-container .error input{
+    box-shadow: 0px 0px 1px 1px #c92020;
+}

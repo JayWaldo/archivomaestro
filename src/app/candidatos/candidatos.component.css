@@ -62,4 +62,5 @@ button:hover{
     display: flex;
     align-items: center;
     font-size: .9rem;
+    gap: 12px;
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEntrevista } from '../Modelos';
-import { EntrevistaService } from 'src/app/services/entrevista.service';
-import { CandidatoService } from 'src/app/services/candidato.service';
+import { FormStateService } from 'src/app/services/FormState.service';
 
 @Component({
   selector: 'app-entrevista',
@@ -10,37 +10,74 @@ import { CandidatoService } from 'src/app/services/candidato.service';
 })
 export class EntrevistaComponent implements OnInit {
 
-  title = 'Entrevista'
-  dropOpciones : {[key: string]: string[]}= {
-    'tipoCandidato': ['NUEVO', 'REINGRESO', 'INDEPENDIENTE'],
-    'tipoEntrevista': ['PRESENCIAL', 'VIRTUAL', 'TELEFONICA'],
-    'estatusEntrevista': ['ACEPTADO', 'RECHAZADO', 'NO SE PRESENTO'],
-    'validacionSindicato': ['ACEPTADO', 'RECHAZADO', 'NO SE PRESENTO', 'NO APLICA EN ESTE PUESTO']
-  }
-  @Input() data : IEntrevista = {
+  title = 'Entrevista';
+  dropOpciones: { [key: string]: string[] } = {
+    'tipoCandidato': ['Nuevo', 'Reingreso', 'Independiente'],
+    'tipoEntrevista': ['Presencial', 'Virtual', 'Telefonica'],
+    'estatusEntrevista': ['Aceptado', 'Rechazado', 'No se presento'],
+    'validacionSindicato': ['Aceptado', 'Rechazado', 'No se presento', 'No aplica al puesto']
+  };
+  
+  @Input() data: IEntrevista = {
     idCandidato: 0,
-    citaEntrevista : false,
-    fechaPrimerEntrevista : new Date(),
+    citaEntrevista: false,
+    fechaPrimerEntrevista: new Date(),
     tipoCandidato: '',
     tipoEntrevista: '',
     estatusPrimerEntrevista: '',
     nombreSupervisor: '',
     estatusSegundaEntrevista: '',
     validacionSindicato: ''
+  };
+
+  entrevistaForm!: FormGroup;
+  isCompleted: boolean = false;
+  private formKey = 'entrevista';
+
+  constructor(
+    private fb: FormBuilder,
+    private formState: FormStateService
+  ){
+    this.entrevistaForm = this.fb.group({
+      citaEntrevista: [''],
+      fechaPrimerEntrevista: [null],
+      tipoCandidato: [''],
+      tipoEntrevista: [''],
+      estatusPrimerEntrevista: [''],
+      nombreSupervisor: [''],
+      estatusSegundaEntrevista: [''],
+      validacionSindicato: ['']
+    });
   }
 
-  constructor() { }
   ngOnInit(): void {
+    const savedState = this.formState.getFormState(this.formKey);
+    if(savedState){
+      this.entrevistaForm.patchValue(savedState);
+    }else{
+      this.entrevistaForm.patchValue(this.data);
+    }
+    this.entrevistaForm.valueChanges.subscribe(
+      ()=> {
+        this.checkAllFieldsFilled();
+      }
+    );
+    this.checkAllFieldsFilled();
   }
 
-  getOpciones(grupo: string){
+  getOpciones(grupo: string) {
     return this.dropOpciones[grupo];
   }
-  saveData(){
-    const fechaEntrevista = this.formatDate(this.data.fechaPrimerEntrevista);
-    this.data.fechaPrimerEntrevista = new Date(fechaEntrevista);
-    console.log(this.data);
+
+  saveData() {
+    const formValue = this.entrevistaForm.value;
+    const fechaEntrevista = this.formatDate(formValue.fechaPrimerEntrevista);
+    formValue.fechaPrimerEntrevista = new Date(fechaEntrevista);
+    console.log(formValue);
+
+    this.saveFormState();
   }
+
   formatDate(date: any): string {
     const parsedDate = new Date(date);
     if (isNaN(parsedDate.getTime())) return '';
@@ -48,5 +85,11 @@ export class EntrevistaComponent implements OnInit {
     const month = (parsedDate.getMonth() + 1).toString().padStart(2, '0');
     const year = parsedDate.getFullYear();
     return `${day}/${month}/${year}`;
+  }
+  private saveFormState(){
+    this.formState.saveFormState(this.formKey ,this.entrevistaForm.value);
+  }
+  private checkAllFieldsFilled() {
+    this.isCompleted = Object.values(this.entrevistaForm.controls).every(control => control.value !== null && control.value !== '');
   }
 }

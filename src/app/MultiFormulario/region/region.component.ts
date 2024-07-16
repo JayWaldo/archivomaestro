@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IRegion }from "../Modelos";
 import { AuthService } from 'src/app/services/auth.service';
 import { RegionService } from 'src/app/services/region.service';
+import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormStateService } from 'src/app/services/FormState.service';
 
 @Component({
   selector: 'app-region',
@@ -12,15 +14,44 @@ export class RegionComponent implements OnInit{
 
   title = "Region"
   regionList ?: IRegion[];
+  regionForm!: FormGroup;
+  isCompleted: boolean = false;
+  private formKey = 'regionForm'
+
+
+  @Input() data : IRegion = {
+    idRegion: 0,
+    region: "",
+    sistema: ""
+  }
+
   constructor(
     private authService: AuthService,
-    private regionService: RegionService
+    private regionService: RegionService,
+    private formState: FormStateService,
+    private fb: FormBuilder
   ) {
-    
+    this.regionForm = this.fb.group({
+      region: ['', Validators.required],
+      sistema: ['', Validators.required]
+    })
   }
 
   ngOnInit(): void {
-      this.fetchRegion();
+    this.fetchRegion();
+    const savedState = this.formState.getFormState(this.formKey);
+    if (savedState) {
+      this.regionForm.patchValue(savedState);
+    } else {
+      this.regionForm.patchValue(this.data);
+    }
+
+    this.regionForm.valueChanges.subscribe(() => {
+      this.saveFormState();
+      this.checkAllFieldsFilled();
+    });
+
+    this.checkAllFieldsFilled();
   }
 
   fetchRegion(){
@@ -45,12 +76,18 @@ export class RegionComponent implements OnInit{
     }
   }
 
-  @Input() data : IRegion = {
-    idRegion: 0,
-    region: "",
-    sistema: ""
-  }
+  
   saveData(){
+    const formValue = this.regionForm.value;
     console.log(this.data);
+    this.saveFormState();
+  }
+
+  private saveFormState() {
+    this.formState.saveFormState(this.formKey, this.regionForm.value);
+  }
+
+  private checkAllFieldsFilled() {
+    this.isCompleted = Object.values(this.regionForm.value).every(field => field !== '');
   }
 }

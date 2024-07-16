@@ -8,6 +8,8 @@ import { IPsicometriasEvaluacion } from '../Modelos';
 })
 export class PsicometriasEvaluacionesComponent implements OnInit {
   title = 'Psicometrias y Evaluaciones'
+  isCompleted: boolean = false;
+
   @Input() data : IPsicometriasEvaluacion= {
     IdCandidato: 0,
     estatusGeneral : '',

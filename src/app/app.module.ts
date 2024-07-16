@@ -61,7 +61,7 @@ registerLocaleData(localMx, 'en-GB');
     CommonModule,
     ReactiveFormsModule
   ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}, SharedService],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'es-GB'}, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

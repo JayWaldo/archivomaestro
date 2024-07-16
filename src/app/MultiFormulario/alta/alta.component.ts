@@ -9,6 +9,8 @@ import { IAlta } from '../Modelos';
 export class AltaComponent implements OnInit {
 
   title = 'Alta'
+  isCompleted: boolean = false;
+
   @Input() data : IAlta = {
     fechCierreFolio: new Date(),
     fechaIngreso: new Date(),

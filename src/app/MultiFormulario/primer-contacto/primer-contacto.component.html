@@ -1,30 +1,34 @@
 <h1>{{title}}</h1>
 
-<div class="input-container">
+<form [formGroup]="primerContactoForm">
+  <div class="input-container">
     <div class="select-container" *ngIf="willShow()">
-        <label for="fechaRedes" class="labelPicker">Fecha Primer Contacto Redes Sociales</label>
-        <div class="datePickerContainer">
-            <input id="fechaRedes" type="text" matInput [matDatepicker]="pickerRedes" [(ngModel)]="data.fechaPrimerContactoRedesSociales">
-            <mat-datepicker-toggle matSuffix [for]="pickerRedes"></mat-datepicker-toggle>
-            <mat-datepicker #pickerRedes></mat-datepicker>
-        </div>
-    </div>
-    <div class="select-container">
-        <label for="fechaReclutador" class="labelPicker">Fecha Primer Contacto con Reclutador</label>
-        <div class="datePickerContainer">
-            <input id="fechaReclutador" type="text" matInput [matDatepicker]="pickerReclutador" [(ngModel)]="data.fechaPrimerContactoReclutador" >
-            <mat-datepicker-toggle matSuffix [for]="pickerReclutador"></mat-datepicker-toggle>
-            <mat-datepicker #pickerReclutador></mat-datepicker>
-        </div>
+      <label for="fechaRedes" class="labelPicker">Fecha Primer Contacto Redes Sociales</label>
+      <div class="datePickerContainer">
+        <input id="fechaRedes" type="text" matInput [matDatepicker]="pickerRedes" formControlName="fechaPrimerContactoRedesSociales">
+        <mat-datepicker-toggle matSuffix [for]="pickerRedes"></mat-datepicker-toggle>
+        <mat-datepicker #pickerRedes></mat-datepicker>
+      </div>
     </div>
 
-    <div class="select-container">Estatus Primer Contacto
-        <select name="dropEstatus" id="estatus" [(ngModel)]="this.data.estatusPrimerContacto">
-            <option value="" disabled [selected]="true">Seleccione una opción</option>
-            <option *ngFor="let item of estatusList; let i = index" value={{item.indexOf(item)}} [value]="item">{{item}}</option>
-        </select>
-        <div class="angle-container">
-            <i class="fas fa-angle-down"></i>
-        </div>
+    <div class="select-container">
+      <label for="fechaReclutador" class="labelPicker">Fecha Primer Contacto con Reclutador</label>
+      <div class="datePickerContainer">
+        <input id="fechaReclutador" type="text" matInput [matDatepicker]="pickerReclutador" formControlName="fechaPrimerContactoReclutador">
+        <mat-datepicker-toggle matSuffix [for]="pickerReclutador"></mat-datepicker-toggle>
+        <mat-datepicker #pickerReclutador></mat-datepicker>
+      </div>
     </div>
-</div>
+
+    <div class="select-container">
+      <label for="estatus">Estatus Primer Contacto</label>
+      <select formControlName="estatusPrimerContacto" id="estatus">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option *ngFor="let item of estatusList" [value]="item">{{item}}</option>
+      </select>
+      <div class="angle-container">
+        <i class="fas fa-angle-down"></i>
+      </div>
+    </div>
+  </div>
+</form>

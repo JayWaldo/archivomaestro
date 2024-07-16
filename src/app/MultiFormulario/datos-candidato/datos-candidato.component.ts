@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IDatosCandidato } from '../Modelos';
 import { SharedService } from 'src/app/services/shared.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormStateService } from 'src/app/services/FormState.service';
 
 @Component({
   selector: 'app-datos-candidato',
@@ -11,15 +13,19 @@ export class DatosCandidatoComponent implements OnInit {
 
   title = "Datos del Candidato"
   mensajeFuente?: string;
+  isCompleted: boolean = false;
+  datosCandForm!: FormGroup;
+  private formKey = 'datosCandidato';
+
   escolaridadList = [
-    'PRIMARIA TERMINADA',
-    'PRIMARIA TRUNCA',
-    'SECUNDARIA TERMINADA',
-    'SECUNDARIA TRUNCA',
-    'PREPARATORIA TERMINADA',
-    'PREPARATORIA TRUNCA',
-    'LICENCIATURA TERMINADA',
-    'LICENCIATURA TRUNCA'
+    'Primaria Terminada',
+    'Primaria Trunca',
+    'Secundaria Terminada',
+    'Secundaria Trunca',
+    'Preparatoria Terminada',
+    'Preparatoria Trunca',
+    'Licenciatura Terminada',
+    'Licenciatura Trunca'
   ]
   fuentesCaptacion = [
     'AGENCIAS LOCALES',
@@ -61,12 +67,14 @@ export class DatosCandidatoComponent implements OnInit {
   vacantes = [
     'chofer',
     'vendedor',
-    'Admin Contable'
+    'Admin Contable',
+    'Desarrollador'
   ]
   @Input() data : IDatosCandidato = {
     fuente: "",
     reclutador: "",
     nombre: "",
+    Rfc: "",
     edad: 0,
     genero: "",
     escolaridad: "",
@@ -74,11 +82,38 @@ export class DatosCandidatoComponent implements OnInit {
     puestoSolicitado: ""
   }
 
-  constructor(private servicioCompartido: SharedService) {
-
+  constructor(
+    private servicioCompartido: SharedService,
+    private formState: FormStateService,
+    private fb: FormBuilder
+  ) {
+    this.datosCandForm = this.fb.group({
+      fuente: ['', Validators.required],
+      reclutador: ['', Validators.required],
+      nombre: ['', Validators.required],
+      Rfc: [''],
+      edad: [''],
+      genero: ['', Validators.required],
+      escolaridad: [''],
+      telefono: [''],
+      puestoSolicitado: ['']
+    })
    }
 
   ngOnInit(): void {
+    const savedState = this.formState.getFormState(this.formKey);
+    if (savedState) {
+      this.datosCandForm.patchValue(savedState);
+    } else {
+      this.datosCandForm.patchValue(this.data);
+    }
+
+    this.datosCandForm.valueChanges.subscribe(() => {
+      this.saveFormState();
+      this.checkAllFieldsFilled();
+    });
+
+    this.checkAllFieldsFilled();
   }
   getOptGrupos(){
     return Object.keys(this.optGrupos);
@@ -91,6 +126,16 @@ export class DatosCandidatoComponent implements OnInit {
     this.servicioCompartido.enviarMensaje(this.mensajeFuente!);
   }
   saveData(){
+    const formValue = this.datosCandForm.value;
     console.log(this.data);
+    this.saveFormState();
+  }
+
+  private saveFormState(){
+    this.formState.saveFormState(this.formKey ,this.datosCandForm.value);
+  }
+  private checkAllFieldsFilled()
+  {
+    this.isCompleted = Object.values(this.datosCandForm.value).every(field => field !== '' || field !== null);
   }
 }

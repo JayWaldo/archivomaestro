@@ -98,10 +98,13 @@ export class FormularioComponent implements OnInit ,AfterViewInit{
   }
    
   btnNext(){
-    this.saveCurrentSectionData();
-    this.sectionsForm[this.currentPart - 1].checked = false
-    this.currentPart += 1;
-    this.sectionsForm[this.currentPart - 1].checked = true
+    const currentComponent = this.getCurrentComponent()
+    if(currentComponent && currentComponent.isCompleted){
+      this.saveCurrentSectionData();
+      this.sectionsForm[this.currentPart - 1].checked = false
+      this.currentPart += 1;
+      this.sectionsForm[this.currentPart - 1].checked = true
+    }
   }
   btnPrev(){
     this.saveCurrentSectionData();
@@ -112,10 +115,15 @@ export class FormularioComponent implements OnInit ,AfterViewInit{
   }
 
   goToSection(index: number){
-    this.saveCurrentSectionData();
-    this.sectionsForm[this.currentPart - 1].checked = false
-    this.currentPart = index + 1
-    this.sectionsForm[this.currentPart - 1].checked = true
+    const currentComponent = this.getCurrentComponent()
+    if(currentComponent && 
+      currentComponent.isCompleted
+    ){
+      this.saveCurrentSectionData();
+      this.sectionsForm[this.currentPart - 1].checked = false
+      this.currentPart = index + 1
+      this.sectionsForm[this.currentPart - 1].checked = true
+    }
   }
 
   saveCurrentSection(){
@@ -222,7 +230,8 @@ export class FormularioComponent implements OnInit ,AfterViewInit{
           fechaCierreFolio: this.candidatoData.alta.fechCierreFolio,
           fechaIngreso: this.candidatoData.alta.fechaIngreso,
           promDiasCobertura: this.candidatoData.alta.promDiasCobertura,
-          region: this.candidatoData.region.idRegion
+          region: this.candidatoData.region.idRegion,
+          Rfc: this.candidatoData.datosCandidato.Rfc
         }
         this.candidatoService.addCandidato(candidato).subscribe(
           (res) => {

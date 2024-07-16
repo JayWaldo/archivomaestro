@@ -9,6 +9,7 @@ import { IEstatus } from '../Modelos';
 export class EstatusComponent implements OnInit {
 
   title = 'Estatus'
+  isCompleted: boolean = false;
   dropOPciones = [
     'DECLINO POR MEJOR OFERTA ECONOMICA',
     'NO APRUEBA PSICOMETRIAS',

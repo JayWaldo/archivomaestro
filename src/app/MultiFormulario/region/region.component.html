@@ -1,7 +1,9 @@
 <h1>{{title}}</h1>
+
+<form [formGroup]="regionForm">
     <div class="input-container">
-        <div class="select-container">Region
-            <select name="dropRegion" id="region" [(ngModel)]="data.region" (change)="onRegionChange($event)">
+        <div class="select-container" [ngClass]="{'error': !regionForm.controls['region'].valid && regionForm.controls['region'].touched}">Region
+            <select formControlName="region" id="region" (change)="onRegionChange($event)">
                 <option value="" disabled [selected]="true">Seleccione una opcion</option>
                 <option *ngFor="let item of regionList" [value]="item.region">{{item.region}}</option>
             </select>
@@ -10,8 +12,8 @@
             </div>
         </div>
     
-        <div class="select-container">Sistema
-            <select name="dropSistema" id="sistema" [(ngModel)]="data.sistema">
+        <div class="select-container" [ngClass]="{'error': !regionForm.controls['sistema'].valid && regionForm.controls['sistema'].touched}">Sistema
+            <select formControlName="sistema" id="sistema">
                 <option value="" disabled [selected]="true">Seleccione una opcion</option>
                 <option *ngFor="let item of regionList" [value]="item.sistema">{{item.sistema}}</option>
             </select>
@@ -20,3 +22,4 @@
             </div>
         </div>
     </div>
+</form>
